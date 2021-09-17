@@ -1,0 +1,48 @@
+$max: 100;
+$i: 0;
+
+.grid {
+  display: grid;
+}
+
+.grid-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.grid-sm-1 {
+  @include tablet {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+}
+
+.grid-sm-2 {
+  @include tablet {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.grid-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.grid-6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+@for $i from 0 through $max {
+  .#{gap-}#{$i} {
+    gap: toRem($i);
+  }
+}

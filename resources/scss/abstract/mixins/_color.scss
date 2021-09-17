@@ -1,0 +1,47 @@
+@mixin make-color($name) {
+  @each $key, $value in $colors {
+    #{$name}#{'-'}#{$key} {
+      color: $value;
+
+      @include at('.button--link', true) {
+        &:hover {
+          color: darken($value, 8%);
+        }
+      }
+    }
+
+    .#{border-color}#{'-'}#{$key} {
+      border-color: $value;
+    }
+  }
+}
+
+.hover-color-white {
+  &:hover {
+    color: white !important;
+
+    .button__icon {
+      color: white !important;
+    }
+  }
+}
+
+.hover-color-hunter-green {
+  &:hover {
+    color: map_get($colors, 'hunter-green') !important;
+
+    .button__icon {
+      color: map_get($colors, 'hunter-green') !important;
+    }
+  }
+}
+
+.hover-color-apple-green {
+  &:hover {
+    color: map_get($colors, 'apple-green') !important;
+
+    .button__icon {
+      color: map_get($colors, 'apple-green') !important;
+    }
+  }
+}

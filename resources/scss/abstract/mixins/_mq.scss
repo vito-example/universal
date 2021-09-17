@@ -1,0 +1,23 @@
+@mixin desktop {
+  @media only screen and (max-width: map-get($grid-breakpoints, 'lg')) {
+    @content;
+  }
+}
+
+@mixin desktop-small {
+  @media only screen and (max-width: map-get($grid-breakpoints, 'md')) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media only screen and (max-width: map-get($grid-breakpoints, 'sm')) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media only screen and (max-width: map-get($grid-breakpoints, 'xs')) {
+    @content;
+  }
+}

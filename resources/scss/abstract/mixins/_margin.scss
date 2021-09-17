@@ -1,0 +1,98 @@
+@mixin make-margin() {
+  $max: 200;
+  $i: 0;
+
+  @for $i from 0 through $max {
+    .#{margin-}#{$i} {
+      margin: toRem($i);
+    }
+  }
+
+  @for $i from 0 through $max {
+    .#{margin-y-}#{$i} {
+      margin-top: toRem($i);
+      margin-bottom: toRem($i);
+    }
+  }
+
+  @for $i from 0 through $max {
+    .#{margin-x-}#{$i} {
+      margin-left: toRem($i);
+      margin-right: toRem($i);
+    }
+  }
+
+  @for $i from 0 through $max {
+    .#{margin-top-}#{$i} {
+      margin-top: toRem($i);
+    }
+  }
+
+  @for $i from 0 through $max {
+    .#{margin-bottom-}#{$i} {
+      margin-bottom: toRem($i);
+    }
+  }
+
+  @for $i from 0 through $max {
+    .#{margin-left-}#{$i} {
+      margin-left: toRem($i);
+    }
+  }
+
+  @for $i from 0 through $max {
+    .#{margin-right-}#{$i} {
+      margin-right: toRem($i);
+    }
+  }
+
+  @each $modifier , $breakpoint in $grid-breakpoints {
+    @media only screen and (max-width: $breakpoint) {
+      @for $i from 1 through $grid__cols {
+        @for $i from 0 through $max {
+          .#{margin-}#{$modifier}-#{$i} {
+            margin: toRem($i);
+          }
+        }
+
+        @for $i from 0 through $max {
+          .#{margin-y-}#{$modifier}-#{$i} {
+            margin-top: toRem($i);
+            margin-bottom: toRem($i);
+          }
+        }
+
+        @for $i from 0 through $max {
+          .#{margin-x-}#{$modifier}-#{$i} {
+            margin-left: toRem($i);
+            margin-right: toRem($i);
+          }
+        }
+
+        @for $i from 0 through $max {
+          .#{margin-top-}#{$modifier}-#{$i} {
+            margin-top: toRem($i);
+          }
+        }
+
+        @for $i from 0 through $max {
+          .#{margin-bottom-}#{$modifier}-#{$i} {
+            margin-bottom: toRem($i);
+          }
+        }
+
+        @for $i from 0 through $max {
+          .#{margin-left-}#{$modifier}-#{$i} {
+            margin-left: toRem($i);
+          }
+        }
+
+        @for $i from 0 through $max {
+          .#{margin-right-}#{$modifier}-#{$i} {
+            margin-right: toRem($i);
+          }
+        }
+      }
+    }
+  }
+}

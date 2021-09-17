@@ -1,0 +1,382 @@
+.form {
+  &__group {
+    position: relative;
+
+    &--material {
+      .form__element:focus + .form__label,
+      .form__element:not(:placeholder-shown) + .form__label {
+        top: toRem(14);
+        font-size: toRem(10);
+        transform: translateY(0);
+      }
+    }
+
+    &-addon {
+      position: absolute;
+      top: 0;
+      right: toRem(16);
+      max-width: toRem(60);
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__label {
+    display: block;
+    font-size: toRem(12);
+    padding-bottom: toRem(18);
+
+    @include at('.form__group--material') {
+      position: absolute;
+      top: 50%;
+      left: toRem(16);
+      color: rgba(#0A2B12, .6);
+      padding: 0;
+      transform: translateY(-50%);
+      transition: $base-transition-sm;
+    }
+
+    @include at('.form__group--textarea') {
+      top: toRem(28);
+    }
+  }
+
+  &__element {
+    display: block;
+    width: 100%;
+    font-family: $font-family;
+    font-size: toRem(12);
+    color: #0A2B12;
+    padding: toRem(20) toRem(16);
+    outline: none;
+    border: 1px solid #E5E5E5;
+    border-radius: 10px;
+    transition: $base-transition-sm;
+
+    @include at('.form__group--material') {
+      padding: toRem(29) toRem(16) toRem(11);
+
+      &::placeholder {
+        color: transparent !important;
+        user-select: none !important;
+      }
+    }
+
+    @include at('textarea', true) {
+      height: toRem(210);
+      padding: toRem(34) toRem(16) toRem(11);
+      resize: none;
+    }
+
+    &:hover {
+      border: 1px solid darken(#E5E5E5, 4%);
+    }
+
+    &:focus {
+      border: 1px solid darken(#E5E5E5, 8%);
+    }
+  }
+}
+
+.checkbox,
+.radio {
+  position: relative;
+  display: block;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  visibility: hidden;
+
+  & + label {
+    position: relative;
+    display: inline-block;
+    padding: toRem(6) toRem(10) toRem(6) toRem(($checkbox-width + 10));
+    cursor: pointer;
+
+    &:before {
+      display: block;
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      margin: toRem((-$checkbox-width / 2)) 0 0;
+      width: toRem($checkbox-width);
+      height: toRem($checkbox-width);
+      background-color: transparent;
+      border: toRem(1) solid map-get($colors, 'platinum');
+      border-radius: toRem(3);
+    }
+  }
+
+  &:checked + label {
+    &:before {
+      background-color: map-get($colors, 'middle-green-yellow');
+      border-color: darken(map-get($colors, 'middle-green-yellow'), 6%);
+    }
+
+    &:after {
+      content: url('data:image/svg+xml,<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.4043 2.28744L4.35986 5.24301L8.72909 0.873779" stroke="white" stroke-linecap="round"/> </svg>');
+      position: absolute;
+      left: toRem(3);
+      top: toRem(6);
+    }
+  }
+
+  &:disabled {
+    & + label {
+      cursor: not-allowed;
+
+      &:before {
+
+      }
+    }
+
+    &:checked + label {
+      &:before {
+        background-color: map-get($colors, 'middle-green-yellow');
+        border-color: darken(map-get($colors, 'middle-green-yellow'), 6%);
+      }
+    }
+  }
+}
+
+input[type="radio"] {
+  position: absolute;
+  visibility: hidden;
+
+  & + label {
+    position: relative;
+    display: inline-block;
+    padding: toRem(6) toRem(10) toRem(6) toRem(($checkbox-width + 10));
+    cursor: pointer;
+
+    &:before {
+      display: block;
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      margin: toRem((-$checkbox-width / 2)) 0 0;
+      width: toRem($checkbox-width);
+      height: toRem($checkbox-width);
+      background-color: transparent;
+      border: toRem(1) solid map-get($colors, 'platinum');
+      border-radius: 50%;
+    }
+  }
+
+  &:checked + label {
+    &:before {
+      background-color: map-get($colors, 'middle-green-yellow');
+      border-color: map-get($colors, 'middle-green-yellow');
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: toRem(5);
+      top: toRem(13);
+      width: toRem(($checkbox-width / 2 - 2));
+      height: toRem(($checkbox-width / 2 - 2));
+      background-color: white;
+      border-radius: 50%;
+    }
+  }
+
+  &:disabled {
+    & + label {
+      cursor: not-allowed;
+
+      &:before {
+
+      }
+    }
+
+    &:checked + label {
+      &:before {
+        background-color: map-get($colors, 'middle-green-yellow');
+        border-color: map-get($colors, 'middle-green-yellow');
+      }
+    }
+  }
+}
+
+.popup {
+  input[type="checkbox"] {
+    &:checked + label {
+      &:after {
+        top: toRem(5);
+      }
+    }
+  }
+
+  input[type="radio"] {
+    &:checked + label {
+      &:after {
+        top: toRem(11);
+      }
+    }
+  }
+}
+
+.custom-select {
+  position: relative;
+  width: 100%;
+  font-size: toRem(12);
+  text-align: left;
+  outline: none;
+  height: toRem(56);
+  line-height: toRem(56);
+
+  &--tree {
+    .items > div {
+      line-height: normal;
+      margin: 0 toRem(23);
+      padding: 0 0 !important;
+      border-bottom: toRem(1) solid #F4F4F4;
+
+      &:last-child {
+        border-color: transparent;
+      }
+
+      &:hover {
+        background-color: transparent !important;
+      }
+
+      .child {
+        padding-right: toRem(20);
+        padding-left: toRem(28) !important;
+      }
+
+      .checkbox {
+        margin: toRem(20) 0;
+
+        input[type=checkbox]:checked + label:after {
+          top: toRem(-1);
+        }
+      }
+
+      label {
+        font-size: toRem(12);
+        color: #121212;
+        padding: 0 0 0 toRem(27);
+        font-feature-settings: 'case';
+      }
+    }
+  }
+}
+
+.custom-select .selected {
+  background-color: white;
+  border-radius: toRem(10);
+  border: toRem(1) solid #E5E5E5;
+  color: #0A2B12;
+  padding-left: toRem(16);
+  cursor: pointer;
+  user-select: none;
+}
+
+.custom-select .selected.open {
+  border-bottom-color: rgba(0, 0, 0, .04);
+  border-radius: toRem(10) toRem(10) 0 0;
+}
+
+.custom-select .selected:after {
+  content: url('data:image/svg+xml,<svg width="11" height="8" viewBox="0 0 11 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.0864 1L5.67296 7L1.2595 0.999999" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+  position: absolute;
+  top: 0;
+  right: toRem(28);
+  width: 0;
+  height: 0;
+}
+
+.custom-select .items {
+  color: #fff;
+  border-radius: 0 0 toRem(6) toRem(6);
+  border-right: 1px solid #E5E5E5;
+  border-left: 1px solid #E5E5E5;
+  border-bottom: 1px solid #E5E5E5;
+  overflow: hidden;
+  position: absolute;
+  background-color: white;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.custom-select .items > div {
+  color: rgba(0, 0, 0, .6);
+  padding-left: 1em;
+  cursor: pointer;
+  user-select: none;
+}
+
+.custom-select .items > div:hover {
+  background-color: rgba(0, 0, 0, .04);
+}
+
+.selectHide {
+  display: none;
+}
+
+
+.custom-dropdown {
+    position: relative;
+    width: 100%;
+    text-align: left;
+    outline: none;
+    height: toRem(56);
+    line-height: toRem(56);
+}
+
+.custom-dropdown .selected {
+    background-color: white;
+    color: #0A2B12;
+    padding-left: toRem(16);
+    cursor: pointer;
+    user-select: none;
+}
+
+.custom-dropdown .selected:after {
+    content: url('data:image/svg+xml,<svg width="11" height="8" viewBox="0 0 11 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.0864 1L5.67296 7L1.2595 0.999999" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    position: absolute;
+    top: 0;
+    right: toRem(-24);
+    width: 0;
+    height: 0;
+}
+
+.custom-dropdown .items {
+    color: #fff;
+    overflow: hidden;
+    position: absolute;
+    background-color: white;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.custom-dropdown .items > div {
+    color: rgba(0, 0, 0, .6);
+    padding-left: 1em;
+    cursor: pointer;
+    user-select: none;
+}
+
+.custom-dropdown .items > div:hover {
+    background-color: rgba(0, 0, 0, .04);
+}
+
+.text-limit {
+  position: relative;
+
+  &__counter {
+    position: absolute;
+    right: toRem(16);
+    bottom: toRem(16);
+    font-size: toRem(12);
+    color: rgba(black, .6);
+  }
+}

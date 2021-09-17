@@ -1,0 +1,65 @@
+html, body, h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+h1 {
+  font-size: toRem(48);
+}
+
+h2 {
+  font-size: toRem(36);
+
+  @include desktop {
+    font-size: toRem(30);
+  }
+}
+
+h3 {
+  font-size: toRem(24);
+}
+
+h4 {
+  font-size: toRem(18);
+}
+
+h5 {
+  font-size: toRem(16);
+}
+
+h6 {
+  font-size: toRem(12);
+}
+
+strong {
+  font-weight: 600;
+}
+
+a {
+  color: $link-color;
+  font-weight: $link-font-weight;
+  text-decoration: $link-text-decoration;
+
+  &:hover {
+    color: $link-hover-color;
+    text-decoration: $link-hover-text-decoration;
+  }
+}
+
+hr{
+  background: #E5E5E5;
+  height: toRem(1);
+  border-width: 0;
+  margin: toRem(24) 0
+}

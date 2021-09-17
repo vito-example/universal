@@ -1,0 +1,98 @@
+@mixin make-padding() {
+  $max: 200;
+  $i: 0;
+
+  @for $i from 0 through $max {
+    .#{padding-}#{$i} {
+      padding: toRem($i);
+    }
+  }
+
+  @for $i from 0 through $max {
+    .#{padding-y-}#{$i} {
+      padding-top: toRem($i);
+      padding-bottom: toRem($i);
+    }
+  }
+
+  @for $i from 0 through $max {
+    .#{padding-x-}#{$i} {
+      padding-left: toRem($i);
+      padding-right: toRem($i);
+    }
+  }
+
+  @for $i from 0 through $max {
+    .#{padding-top-}#{$i} {
+      padding-top: toRem($i);
+    }
+  }
+
+  @for $i from 0 through $max {
+    .#{padding-bottom-}#{$i} {
+      padding-bottom: toRem($i);
+    }
+  }
+
+  @for $i from 0 through $max {
+    .#{padding-left-}#{$i} {
+      padding-left: toRem($i);
+    }
+  }
+
+  @for $i from 0 through $max {
+    .#{padding-right-}#{$i} {
+      padding-right: toRem($i);
+    }
+  }
+
+  @each $modifier , $breakpoint in $grid-breakpoints {
+    @media only screen and (max-width: $breakpoint) {
+      @for $i from 1 through $grid__cols {
+        @for $i from 0 through $max {
+          .#{padding-}#{$modifier}-#{$i} {
+            padding: toRem($i);
+          }
+        }
+
+        @for $i from 0 through $max {
+          .#{padding-y-}#{$modifier}-#{$i} {
+            padding-top: toRem($i);
+            padding-bottom: toRem($i);
+          }
+        }
+
+        @for $i from 0 through $max {
+          .#{padding-x-}#{$modifier}-#{$i} {
+            padding-left: toRem($i);
+            padding-right: toRem($i);
+          }
+        }
+
+        @for $i from 0 through $max {
+          .#{padding-top-}#{$modifier}-#{$i} {
+            padding-top: toRem($i);
+          }
+        }
+
+        @for $i from 0 through $max {
+          .#{padding-bottom-}#{$modifier}-#{$i} {
+            padding-bottom: toRem($i);
+          }
+        }
+
+        @for $i from 0 through $max {
+          .#{padding-left-}#{$modifier}-#{$i} {
+            padding-left: toRem($i);
+          }
+        }
+
+        @for $i from 0 through $max {
+          .#{padding-right-}#{$modifier}-#{$i} {
+            padding-right: toRem($i);
+          }
+        }
+      }
+    }
+  }
+}

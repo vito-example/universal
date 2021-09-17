@@ -1,0 +1,25 @@
+@mixin first() {
+  &:first-child {
+    @content
+  }
+}
+
+@mixin last() {
+  &:last-child {
+    @content
+  }
+}
+
+@mixin before() {
+  &:before {
+    content: '';
+    @content
+  }
+}
+
+@mixin after() {
+  &:before {
+    content: '';
+    @content
+  }
+}

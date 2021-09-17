@@ -1,0 +1,40 @@
+body {
+  background-color: $body-bg;
+  font-family: $font-family;
+}
+
+.container {
+  width: toRem($container-width);
+  margin-left: auto;
+  margin-right: auto;
+
+  @include desktop {
+    width: 100%;
+    padding-left: toRem(40);
+    padding-right: toRem(40);
+  }
+
+  @include desktop-small {
+    padding-left: toRem(24);
+    padding-right: toRem(24);
+  }
+
+  @include mobile {
+    padding-left: toRem(16);
+    padding-right: toRem(16);
+  }
+
+  &--small {
+    width: toRem(856);
+
+    @include tablet {
+      width: 100%;
+    }
+  }
+
+  &.is-fluid {
+    width: 100%;
+    padding-left: toRem(72);
+    padding-right: toRem(72);
+  }
+}

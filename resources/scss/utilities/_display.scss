@@ -1,0 +1,37 @@
+.block {
+  display: block;
+}
+
+.hide-md-down {
+  @include tablet {
+    display: none;
+  }
+}
+
+.show-md-down {
+  display: none;
+
+  @include desktop-small {
+    display: block;
+  }
+}
+
+.show-sm-down {
+  display: none;
+
+  @include tablet {
+    display: block;
+  }
+}
+
+.hide-sm-down {
+  @include tablet {
+    display: none !important;
+  }
+}
+
+.block-sm-down {
+  @include mobile {
+    display: block !important;
+  }
+}

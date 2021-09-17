@@ -1,0 +1,4 @@
+@function mapValue($map, $first, $second) {
+  $return: map-get(map-get($map, $first), $second);
+  @return $return;
+}

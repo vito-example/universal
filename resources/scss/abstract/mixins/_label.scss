@@ -1,0 +1,22 @@
+@mixin make-label($name) {
+  #{$name} {
+    display: flex;
+    align-items: center;
+    height: toRem(32);
+    font-size: toRem(12);
+    font-weight: 600;
+    padding: 0 toRem(16);
+    border: toRem(1) solid transparent;
+    border-radius: toRem(map-get($base-border-radius, 'default'));
+  }
+
+  @each $variant, $hex in $variants {
+    #{$name}#{$modifier-separator}#{$variant} {
+      color: variantsMap($variant, text);
+
+      &-outline {
+        border-color: variantsMap($variant, default);
+      }
+    }
+  }
+}

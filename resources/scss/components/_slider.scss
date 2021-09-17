@@ -1,0 +1,83 @@
+.slider {
+  position: relative;
+
+  &__inner {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  &__track {
+    display: flex;
+    overflow: hidden;
+    transition: $base-transition;
+  }
+
+  &__item {
+    width: 100%;
+    flex-shrink: 0;
+  }
+}
+
+.carousel {
+  position: relative;
+  text-align: left;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.carousel * {
+  box-sizing: border-box;
+}
+
+.carousel__track {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.carousel__viewport {
+  overflow: hidden;
+}
+
+.carousel__slide {
+  scroll-snap-stop: auto;
+  flex-shrink: 0;
+  margin: 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel__prev,
+.carousel__next {
+  width: toRem(32);
+  height: toRem(32);
+  background-color: white;
+  color: #E5E5E5;
+  padding: 0;
+  border: toRem(1) solid #E5E5E5;
+  cursor: pointer;
+  transition: $base-transition;
+  border-radius: 50%;
+
+  &:hover {
+    color: #9DBF53;
+  }
+}
+
+.carousel__prev {
+  padding-right: toRem(1);
+}
+
+.carousel__next {
+  margin-left: toRem(12);
+}
+
+.carousel__icon {
+  width: toRem(27);
+  height: 100%;
+  fill: currentColor;
+}

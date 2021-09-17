@@ -1,0 +1,10 @@
+@mixin make-line-height() {
+  $max: 80;
+  $i: 0;
+
+  @for $i from 0 through $max {
+    .#{line-height-}#{$i} {
+      line-height: toRem($i);
+    }
+  }
+}

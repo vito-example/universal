@@ -1,0 +1,61 @@
+.nav {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  &--tabs {
+    border-bottom: toRem(1) solid rgba(black, .1);
+  }
+
+  &__item {
+    padding: $nav-item-padding-y toRem($nav-item-padding-x);
+
+    @include first {
+      padding-left: 0;
+    }
+
+    @include last {
+      padding-right: 0;
+    }
+
+    @include at('.nav--horizontal') {
+      display: inline-block;
+    }
+  }
+
+  &__link {
+    display: block;
+    font-weight: normal;
+    font-size: toRem(16);
+    color: black;
+    text-decoration: none;
+
+    &:hover {
+      color: lighten(black, 10%);
+    }
+
+    @include at('.nav--tabs') {
+      font-size: toRem(18);
+      padding: toRem(32) 0;
+
+      &:hover {
+        color: lighten(black, 20%);
+      }
+    }
+
+    @include at('.nav--tabs .is-active') {
+      position: relative;
+      font-weight: 600;
+      color: #E49540;
+
+      @include after {
+        position: absolute;
+        left: 0;
+        bottom: toRem(-1);
+        width: 100%;
+        height: toRem(1);
+        background-color: #E49540;
+      }
+    }
+  }
+}

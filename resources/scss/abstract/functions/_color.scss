@@ -1,0 +1,4 @@
+@function variantsMap($base, $shade: base) {
+  $color: map-get(map-get($variants, $base), $shade);
+  @return $color;
+}

@@ -1,0 +1,31 @@
+.diver {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: toRem(30);
+  margin: toRem(32) 0;
+
+  @include before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: toRem(1);
+    background-color: #E5E5E5;
+    transform: translateY(-50%);
+  }
+
+  &__title {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: toRem(30);
+    height: toRem(30);
+    font-size: toRem(12);
+    background-color: white;
+    border: toRem(1) solid #E5E5E5;
+    border-radius: 50%;
+    z-index: 2;
+  }
+}

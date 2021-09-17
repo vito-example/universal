@@ -1,0 +1,7 @@
+.hero {
+  &__image {
+    @include desktop-small {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,68 @@
+version: '3'
+services:
+  redis:
+    image: redis:alpine
+    container_name: nlyc-medical-redis
+    restart: unless-stopped
+    tty: true
+    ports:
+      - 6379:6379
+    networks:
+      - nlyc-medical-app-network
+  app:
+    image: php
+    container_name: nlyc-medical-app
+    restart: unless-stopped
+    tty: true
+    working_dir: /var/www
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - nlyc-medical-app-network
+    volumes:
+      - "nfsmount:/var/www"
+      - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+  webserver:
+    image: nginx:alpine
+    container_name: nlyc-medical-webserver
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "81:80"
+      - "444:443"
+    networks:
+      - nlyc-medical-app-network
+    volumes:
+      - "nfsmount:/var/www"
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+  db:
+    image: mysql:8.0.21
+    container_name: nlyc-medical-db
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "${DB_PORT}:3306"
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_HOST: "%"
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    networks:
+      - nlyc-medical-app-network
+    volumes:
+      - dbdata:/var/lib/mysql/
+      - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+networks:
+  nlyc-medical-app-network:
+    driver: bridge
+volumes:
+  dbdata:
+    driver: local
+  nfsmount:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=host.docker.internal,rw,nolock,hard,nointr,nfsvers=3
+      device: ":${APP_PATH}"
