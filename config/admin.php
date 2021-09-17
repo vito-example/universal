@@ -7,14 +7,14 @@ return [
     /**
      * Handcrafted member.
      */
-    'handcrafted_by'        => 'Tazo Mindiashvili',
+    'handcrafted_by'        => 'Vito Makhatadze',
 
     'version'               => 'v.1',
 
     /**
      * Handcrafted member url.
      */
-    'handcrafted_by_url'        => 'https://www.linkedin.com/in/tmindiashvili/',
+    'handcrafted_by_url'        => 'https://www.linkedin.com/in/vito-maxatadze-67b451197/',
 
     /**
      * Admin user avatar url.
@@ -24,7 +24,7 @@ return [
     /**
      * Project name.
      */
-    'project_name'          => env('PROJECT_NAME', 'Tazo Panel'),
+    'project_name'          => env('PROJECT_NAME', 'Vito Panel'),
 
     /**
      * Project avatar url.
@@ -44,20 +44,6 @@ return [
             'src'       => '/img/persepro.png',
             'style'     => 'width: 100px'
         ]
-    ],
-
-
-    /**
-     * Recaptcha config.
-     */
-    'recaptcha'             => [
-        'modules'     => [
-            'login' => [
-                'status'    => env('RECAPTCHA_MODULE_LOGIN_STATUS', false)
-            ]
-        ],
-        'secret_key'    => env('RECAPTCHA_SECRET_KEY','6Ld9P7MZAAAAABVFd6wxIZq25YHwRQqX1xPCmeG8'),
-        'public_key'    => env('RECAPTCHA_PUBLIC_KEY', '6Ld9P7MZAAAAABTzd1xQY2XkL8H6wT7nKxjb6tGN')
     ],
 
     'login_web_modules'     => [],

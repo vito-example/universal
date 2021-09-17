@@ -20,42 +20,12 @@ return [
                         'is_required' => false,
                         'additional_fields' => [
                             [
-                                'label' => 'sub_title',
-                                'name' => 'sub_title',
+                                'label' => 'title',
+                                'name' => 'title',
                                 'type' => 'wysiwig',
                                 'is_translation' => true,
                                 'is_required' => false,
                                 'locales' => []
-                            ],
-                            [
-                                'label' => 'action_button_title',
-                                'name' => 'action_button_title',
-                                'type' => 'text',
-                                'is_translation' => true,
-                                'is_required' => false,
-                                'locales' => []
-                            ],
-                            [
-                                'label' => 'action_button_url',
-                                'name' => 'action_button_url',
-                                'type' => 'text',
-                                'is_translation' => false,
-                                'is_required' => false,
-                            ],
-                            [
-                                'label' => 'second_action_button_title',
-                                'name' => 'second_action_button_title',
-                                'type' => 'text',
-                                'is_translation' => true,
-                                'is_required' => false,
-                                'locales' => []
-                            ],
-                            [
-                                'label' => 'second_action_button_url',
-                                'name' => 'second_action_button_url',
-                                'type' => 'text',
-                                'is_translation' => false,
-                                'is_required' => false,
                             ],
                         ]
                     ]

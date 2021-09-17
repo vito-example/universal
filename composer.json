@@ -37,22 +37,11 @@
         "spatie/laravel-permission": "^4.0",
         "tightenco/ziggy": "^1.0"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/tmindiashvili1/modules"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/tmindiashvili1/laravel-test-factory-helper"
-        }
-    ],
     "require-dev": {
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.2",
-        "mpociot/laravel-test-factory-helper": "dev-master",
         "nunomaduro/collision": "^5.0",
         "phpunit/phpunit": "^9.3.3"
     },

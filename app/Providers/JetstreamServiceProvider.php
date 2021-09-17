@@ -54,7 +54,7 @@ class JetstreamServiceProvider extends ServiceProvider
                 $view->with('allSeoData', $allSeoData);
             });
 
-            $pages = Page::whereIn('name', [Page::NAME_CONTACT, Page::NAME_SOCIAL])->get();
+            $pages = Page::whereIn('name', [ Page::NAME_SOCIAL])->get();
             $layoutData = [];
             foreach($pages as $page) {
                 $pageData = (new PageMetaInfoResource($page->meta))->toArray();

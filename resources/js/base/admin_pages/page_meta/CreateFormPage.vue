@@ -21,7 +21,7 @@
                         </span>
 
                         <single-elements
-                            v-if="type == 'home'"
+                            v-if="type === 'home'"
                             :editorConfig="editorConfig"
                             :default-locale="default_locale"
                             :locales="locales"
@@ -33,7 +33,7 @@
                         </single-elements>
 
                         <single-elements
-                            v-if="type == 'setting'"
+                            v-if="type === 'project'"
                             :editorConfig="editorConfig"
                             :default-locale="default_locale"
                             :locales="locales"
@@ -45,7 +45,20 @@
                         </single-elements>
 
                         <single-elements
-                            v-if="type == 'about'"
+                            v-if="type === 'blog'"
+                            :editorConfig="editorConfig"
+                            :default-locale="default_locale"
+                            :locales="locales"
+                            :lang="lang"
+                            :options="options"
+                            :routes="routes"
+                            :updateData="updateData"
+                            :item="this.form && this.form.meta ? this.form.meta : undefined">
+                        </single-elements>
+
+
+                        <single-elements
+                            v-if="type === 'about'"
                             :editorConfig="editorConfig"
                             :default-locale="default_locale"
                             :locales="locales"
@@ -57,7 +70,7 @@
                         </single-elements>
 
                         <single-elements
-                            v-if="type == 'privacy'"
+                            v-if="type === 'team'"
                             :editorConfig="editorConfig"
                             :default-locale="default_locale"
                             :locales="locales"
@@ -69,7 +82,7 @@
                         </single-elements>
 
                         <single-elements
-                            v-if="type == 'terms'"
+                            v-if="type === 'team'"
                             :editorConfig="editorConfig"
                             :default-locale="default_locale"
                             :locales="locales"
@@ -81,7 +94,7 @@
                         </single-elements>
 
                         <single-elements
-                            v-if="type == 'beta-modal'"
+                            v-if="type === 'social'"
                             :editorConfig="editorConfig"
                             :default-locale="default_locale"
                             :locales="locales"
@@ -93,31 +106,7 @@
                         </single-elements>
 
                         <single-elements
-                            v-if="type == 'contact'"
-                            :editorConfig="editorConfig"
-                            :default-locale="default_locale"
-                            :locales="locales"
-                            :lang="lang"
-                            :options="options"
-                            :routes="routes"
-                            :updateData="updateData"
-                            :item="this.form && this.form.meta ? this.form.meta : undefined">
-                        </single-elements>
-
-                        <single-elements
-                            v-if="type == 'social'"
-                            :editorConfig="editorConfig"
-                            :default-locale="default_locale"
-                            :locales="locales"
-                            :lang="lang"
-                            :options="options"
-                            :routes="routes"
-                            :updateData="updateData"
-                            :item="this.form && this.form.meta ? this.form.meta : undefined">
-                        </single-elements>
-
-                        <single-elements
-                            v-if="type == 'seo'"
+                            v-if="type === 'seo'"
                             :editorConfig="editorConfig"
                             :default-locale="default_locale"
                             :locales="locales"

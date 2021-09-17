@@ -7,7 +7,7 @@ return [
      * Meta title section
      */
     'title' => [
-        'default' => env('APP_NAME','Medu.ge'),
+        'default' => env('APP_NAME','uproject.ge'),
         'separator' => '-',
         'max_length' => 255,
     ],
