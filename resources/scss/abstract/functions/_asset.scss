@@ -1,7 +1,0 @@
-@function asset($type, $file) {
-  @return url('../' + $type + '/' + $file);
-}
-
-@function font($file) {
-  @return asset('fonts', $file);
-}

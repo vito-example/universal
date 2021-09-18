@@ -16,7 +16,8 @@ return [
     'locales'   => [
         'ka',
         'en',
-        'ru'
+        'ru',
+        'fr'
     ],
     'default_locale'    => 'ka'
 ];

@@ -1,96 +1,172 @@
 <template>
+    <!--    <header class="header">-->
+    <!--            <div class="show-md-down">-->
+    <!--                <button-->
+    <!--                        class="button button&#45;&#45;link padding-0"-->
+    <!--                        v-if="!burgerMenuVisible"-->
+    <!--                        @click="onShowBurgerMenu"-->
+    <!--                >-->
+    <!--                    <svg width="21" height="24" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+    <!--                        <path d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z" fill="black"/>-->
+    <!--                    </svg>-->
+    <!--                </button>-->
+
+    <!--                <button-->
+    <!--                        class="button button&#45;&#45;link padding-0"-->
+    <!--                        v-if="burgerMenuVisible"-->
+    <!--                        @click="onShowBurgerMenu"-->
+    <!--                >-->
+    <!--                    <svg width="18" height="24" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+    <!--                        <path d="M1 13.5L13 1.5M1 1.5L13 13.5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>-->
+    <!--                    </svg>-->
+    <!--                </button>-->
+    <!--            </div>-->
+    <!--&lt;!&ndash;        <burger-menu v-if="burgerMenuVisible" />&ndash;&gt;-->
+    <!--    </header>-->
     <header class="header">
-        <div class="header__container container">
-            <logo
-                height="44"
-                alt="Agrarium"
-                :custom-class="'header__brand'"
-            />
-
-            <HeaderNavigation />
-
-            <div class="header__profile">
-                <button
-                    v-if="!isAuth()"
-                    type="button"
-                    class="button button--secondary button--shadow padding-y-11 border-radius-12"
-                    @click="onShowLoginPopup"
-                >
-                  {{__('ავტორიზაცია')}}
-                </button>
-
-              <dropdown
-                  v-if="isAuth()"
-                  :options="profileOptions"
-                  :default="`${firstName()}`"
-                  class="select"
-              />
-            </div>
-
-            <div class="show-md-down">
-                <button
-                        class="button button--link padding-0"
-                        v-if="!burgerMenuVisible"
-                        @click="onShowBurgerMenu"
-                >
-                    <svg width="21" height="24" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z" fill="black"/>
-                    </svg>
-                </button>
-
-                <button
-                        class="button button--link padding-0"
-                        v-if="burgerMenuVisible"
-                        @click="onShowBurgerMenu"
-                >
-                    <svg width="18" height="24" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 13.5L13 1.5M1 1.5L13 13.5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
+        <div class="header_top_slider flex slick-initialized slick-slider">
+            <a :href="'tel://' + getValueByFields(contact.fields,'phone')" target="_blank" class="flex info">
+                <img src="/landing_resources/img/icons/header/1.png" alt=""/>
+                <div>{{ getValueByFields(contact.fields, 'phone') }}</div>
+            </a>
+            <a class="flex info">
+                <img src="/landing_resources/img/icons/header/2.png" alt=""/>
+                <div>{{ getValueByFields(contact.fields, 'address') }}</div>
+            </a>
+            <a :href="'mailto:' + getValueByFields(contact.fields,'email')" target="_blank" class="flex info">
+                <img src="/landing_resources/img/icons/header/3.png" alt=""/>
+                <div>{{ getValueByFields(contact.fields, 'email') }}</div>
+            </a>
+            <div class="flex info">
+                <img src="/landing_resources/img/icons/header/4.png" alt=""/>
+                <div>{{ getValueByFields(contact.fields, 'working') }}</div>
             </div>
         </div>
-
-        <burger-menu v-if="burgerMenuVisible" />
+        <div class="top flex">
+            <div class="flex left" v-if="contact && contact.fields">
+                <a :href="'tel://' + getValueByFields(contact.fields,'phone')" target="_blank" class="flex info">
+                    <img src="/landing_resources/img/icons/header/1.png" alt=""/>
+                    <div>{{ getValueByFields(contact.fields, 'phone') }}</div>
+                </a>
+                <a class="flex info">
+                    <img src="/landing_resources/img/icons/header/2.png" alt=""/>
+                    <div>{{ getValueByFields(contact.fields, 'address') }}</div>
+                </a>
+                <a :href="'mailto:' + getValueByFields(contact.fields,'email')" target="_blank" class="flex info">
+                    <img src="/landing_resources/img/icons/header/3.png" alt=""/>
+                    <div>{{ getValueByFields(contact.fields, 'email') }}</div>
+                </a>
+                <div class="flex info">
+                    <img src="/landing_resources/img/icons/header/4.png" alt=""/>
+                    <div>{{ getValueByFields(contact.fields, 'working') }}</div>
+                </div>
+            </div>
+            <div class="flex right" v-if="social && social.fields">
+                <template v-if="getValueByFields(social.fields,'facebook')">
+                    <a :href="getValueByFields(social.fields,'facebook')" class="sm" target="_blank">
+                        <img src="/landing_resources/img/icons/social-media/1.png" alt=""/>
+                    </a>
+                </template>
+                <template v-if="getValueByFields(social.fields,'twitter')">
+                    <a :href="getValueByFields(social.fields,'twitter')" target="_blank" class="sm">
+                        <img src="/landing_resources/img/icons/social-media/2.png" alt=""/>
+                    </a>
+                </template>
+                <template v-if="getValueByFields(social.fields,'linkedin')">
+                    <a :href="getValueByFields(social.fields,'linkedin')" target="_blank" class="sm">
+                        <img src="/landing_resources/img/icons/social-media/3.png" alt=""/>
+                    </a>
+                </template>
+                <template v-if="getValueByFields(social.fields,'youtube')">
+                    <a :href="getValueByFields(social.fields,'youtube')" target="_blank" class="sm">
+                        <img src="/landing_resources/img/icons/social-media/4.png" alt=""/>
+                    </a>
+                </template>
+            </div>
+        </div>
+        <div class="bottom border flex">
+            <inertia-link :href="route('home.index')" class="logo red_bg part flex center">
+                <div class="main medium">
+                    {{ __('UNIVERSAL') }} <span class="black medium">{{ 'PROJECT' }}</span>
+                </div>
+                <div class="poppins">Road, Water, Architecture, Topography</div>
+            </inertia-link>
+            <div class="navbar part">
+                <inertia-link :href="route('home.index')">
+                    <div class="nav main_blue flex center current">{{ __('Home') }}</div>
+                </inertia-link>
+                <inertia-link :href="route('home.index')">
+                    <div class="nav main_blue flex center">{{ __('Projects') }}</div>
+                </inertia-link>
+                <inertia-link :href="route('home.index')">
+                    <div class="nav main_blue flex center">{{ __('Blog') }}</div>
+                </inertia-link>
+                <inertia-link :href="route('home.index')">
+                    <div class="nav main_blue flex center">{{ __('Team') }}</div>
+                </inertia-link>
+                <inertia-link :href="route('home.index')">
+                    <div class="nav main_blue flex center">{{ __('About us') }}</div>
+                </inertia-link>
+                <inertia-link :href="route('home.index')">
+                    <div class="nav main_blue flex center">{{ __('Contact us') }}</div>
+                </inertia-link>
+            </div>
+            <button id="menu_btn"></button>
+            <landing-language-selector/>
+        </div>
     </header>
+
 </template>
 
 <script>
 import emitter from "@/Plugins/bus"
-import { Inertia } from "@inertiajs/inertia"
+import {Inertia} from "@inertiajs/inertia"
 
 // components
-import HeaderNavigation from "@/Components/Layout/Header/HeaderNavigation"
 import Logo from "@/Components/Layout/Logo/Logo"
 import Dropdown from "@/Components/Web/Dropdown/Dropdown"
 import BurgerMenu from "@/Components/Layout/Header/BurgerMenu"
+import LandingLanguageSelector from "../../LandingLanguageSelector";
 
 export default {
     name: "Header",
 
     components: {
-        HeaderNavigation,
         Logo,
         Dropdown,
-        BurgerMenu
+        BurgerMenu,
+        LandingLanguageSelector
     },
 
-    data () {
+    data() {
         return {
             burgerMenuVisible: false
         }
     },
-
-    methods: {
-        onShowLoginPopup () {
-          emitter.emit('showLoginPopup')
+    computed: {
+        contact() {
+            return this.$page.props.layoutData ? this.$page.props.layoutData.contact : {}
         },
-
-        onShowBurgerMenu () {
+        social() {
+            return this.$page.props.layoutData ? this.$page.props.layoutData.social : {}
+        },
+    },
+    methods: {
+        onShowLoginPopup() {
+            emitter.emit('showLoginPopup')
+        },
+        getValueByFields(fields, key) {
+            if (!fields[key]) {
+                return ''
+            }
+            return fields[key].value
+        },
+        onShowBurgerMenu() {
             this.burgerMenuVisible = !this.burgerMenuVisible
         }
     },
 
-    mounted () {
+    mounted() {
         Inertia.on('start', (event) => {
             this.burgerMenuVisible = false
         })

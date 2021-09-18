@@ -27,4 +27,10 @@
     <body class="font-sans antialiased">
         @inertia
     </body>
+    <script src="{{asset('../landing_resources/js/jquery-1.11.0.min.js')}}"></script>
+    <script src="{{asset('../landing_resources/js/jquery-migrate-1.2.1.min.js')}}"></script>
+    <script src="{{asset('../landing_resources/js/slick.min.js')}}"></script>
+
+    <script src="{{asset('../landing_resources/js/general.js')}}"></script>
+    <script src="{{asset('../landing_resources/js/slide.js')}}"></script>
 </html>

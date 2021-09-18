@@ -428,6 +428,51 @@ return [
                 ]
             ],
         ],
+        'contact' => [
+            'contact' => [
+                'activeLocaleKey' => 'ka',
+                'key' => 'contact',
+                'label' => '',
+                'status' => 1,
+                'inputs' => [
+                    [
+                        'label' => 'phone',
+                        'name' => 'phone',
+                        'type' => 'text',
+                        'is_translation' => false,
+                        'is_required' => false
+                    ],
+                    [
+                        'label' => 'email',
+                        'name' => 'email',
+                        'type' => 'text',
+                        'is_translation' => false,
+                        'is_required' => false
+                    ],
+                    [
+                        'label' => 'address',
+                        'name' => 'address',
+                        'type' => 'text',
+                        'is_translation' => true,
+                        'is_required' => false
+                    ],
+                    [
+                        'label' => 'working',
+                        'name' => 'working',
+                        'type' => 'text',
+                        'is_translation' => true,
+                        'is_required' => false
+                    ],
+                    [
+                        'label' => 'map_iframe',
+                        'name' => 'map_iframe',
+                        'type' => 'textarea',
+                        'is_translation' => false,
+                        'is_required' => false
+                    ],
+                ]
+            ],
+        ],
         'social' => [
             'social' => [
                 'activeLocaleKey' => 'ka',
@@ -450,13 +495,6 @@ return [
                         'is_required' => false
                     ],
                     [
-                        'label' => 'youtube',
-                        'name' => 'youtube',
-                        'type' => 'text',
-                        'is_translation' => false,
-                        'is_required' => false
-                    ],
-                    [
                         'label' => 'linkedin',
                         'name' => 'linkedin',
                         'type' => 'text',
@@ -464,8 +502,8 @@ return [
                         'is_required' => false
                     ],
                     [
-                        'label' => 'instagram',
-                        'name' => 'instagram',
+                        'label' => 'youtube',
+                        'name' => 'youtube',
                         'type' => 'text',
                         'is_translation' => false,
                         'is_required' => false

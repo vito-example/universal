@@ -6,8 +6,7 @@
     </portal>
 </template>
 <script>
-import Portal from "@/Layouts/Portal";
 export default {
-    components: {Portal}
+    components: {}
 }
 </script>

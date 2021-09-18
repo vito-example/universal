@@ -1,18 +1,12 @@
 <template>
-    <div class="language-switcher">
-        <a
-                :href="route('language', [selectable_locale])"
-                class="flex items-center"
-        >
-                <img
-                    :src="`/flag/${selectable_locale}.png`"
-                    width="16"
-                    height="16"
-                >
-            <div class="font-size-xs font-weight-600">
-                {{ selectable_locale === 'ka' ? 'GEO' : 'ENG' }}
-            </div>
-        </a>
+    <div class="languages red_bg part flex center">
+        <img src="/landing_resources/img/icons/header/5.png" alt="" />
+        <div class="dropdown">
+            <a class="lang" :class="{ 'on': isActive('en') }" :href="route('language','en')">{{__('ENG')}}</a>
+            <a class="lang" :class="{ 'on': isActive('ru') }" :href="route('language', 'ru')">{{__('RUS')}}</a>
+            <a class="lang" :class="{ 'on': isActive('ka') }" :href="route('language', 'ka')">{{__('GEO')}}</a>
+            <a class="lang" :class="{ 'on': isActive('fr') }" :href="route('language', 'fr')">{{__('FRN')}}</a>
+        </div>
     </div>
 </template>
 
@@ -20,12 +14,10 @@
 
 export default {
     components: {},
-    computed: {
-        selectable_locale() {
-            if (this.$page.props.locale == 'ka') {
-                return 'en';
-            }
-            return 'ka';
+    methods: {
+        isActive(locale) {
+            console.log(this.$page)
+            return this.$page.props.locale === locale ? 'on' : '';
         }
     }
 }

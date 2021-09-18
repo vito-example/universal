@@ -1,5 +1,4 @@
 require('./bootstrap');
-
 // Import modules...
 import { createApp, h,resolveComponent, } from 'vue';
 import { App as InertiaApp, plugin as InertiaPlugin } from '@inertiajs/inertia-vue3';
@@ -9,7 +8,7 @@ import Helpers from '@/Mixins/Helpers';
 import { VueClipboard } from '@soerenmartius/vue3-clipboard';
 import { Vue3Mq } from 'vue3-mq';
 // import VCalendar from 'v-calendar';
-import { SetupCalendar, Calendar, DatePicker } from 'v-calendar';
+import { SetupCalendar} from 'v-calendar';
 
 const el = document.getElementById('app');
 
@@ -42,24 +41,6 @@ const app = createApp({
             }
         }
     })
-    // Use the components
-    .component('Calendar', Calendar)
-    .component('DatePicker', DatePicker)
-    // .use(VCalendar,{
-    //     locales: {
-    //         "ka-GE": {
-    //             id: 'ka-GE',
-    //             dayNames: ['Bazar', 'Bazar ertəsi', 'Çərşənbə axşamı', 'Çərşənbə', 'Cümə axşamı', 'Cümə', 'Şənbə'],
-    //             dayNamesShort: ['Ba', 'Ba.e', 'Çər.a', 'Çər', 'Cüm.a', 'Cüm', 'Şən'],
-    //             dayNamesShorter: ['Ba', 'B.e', 'Ç.a', 'Çə', 'C.a', 'Cü', 'Şə'],
-    //             dayNamesNarrow: ['B', 'B', 'Ç', 'Ç', 'C', 'C', 'Ş'],
-    //             masks: {
-    //                 L: 'YYYY-MM-DD'
-    //                 // ...optional `title`, `weekdays`, `navMonths`, etc
-    //             }
-    //         }
-    //     }
-    // })
     .use(InertiaPlugin)
     .mount(el);
 InertiaProgress.init({ color: '#E49540' });

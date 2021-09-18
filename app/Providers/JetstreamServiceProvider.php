@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Actions\Jetstream\DeleteUser;
 use App\Modules\Pages\Http\Resources\Client\PageMetaInfoResource;
 use App\Modules\Pages\Models\Page;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Inertia\Inertia;
 use Laravel\Jetstream\Jetstream;
@@ -34,10 +36,7 @@ class JetstreamServiceProvider extends ServiceProvider
     {
         $this->configurePermissions();
 
-        Jetstream::deleteUsersUsing(DeleteUser::class);
-
         $layoutData = null;
-        $betaModalResponseData = null;
         $allSeoData = null;
         if(Schema::hasTable('pages_meta')){
             $analyticSeoData = Page::whereName(Page::NAME_SEO)->first();
@@ -54,7 +53,7 @@ class JetstreamServiceProvider extends ServiceProvider
                 $view->with('allSeoData', $allSeoData);
             });
 
-            $pages = Page::whereIn('name', [ Page::NAME_SOCIAL])->get();
+            $pages = Page::whereIn('name', [ Page::NAME_CONTACT,Page::NAME_SOCIAL])->get();
             $layoutData = [];
             foreach($pages as $page) {
                 $pageData = (new PageMetaInfoResource($page->meta))->toArray();
@@ -79,26 +78,7 @@ class JetstreamServiceProvider extends ServiceProvider
                     return json_decode(file_get_contents($file), true);
                 }
             },
-            'loginModal' => function () {
-                return Session::get('loginModal')
-                    ? Session::get('loginModal')
-                    : false;
-            },
-            'verifyModal' => function () {
-                return Session::get('verifyModal')
-                    ? Session::get('verifyModal')
-                    : false;
-            },
-            'finishProfileModal' => function () {
-                return Session::get('finishProfileModal')
-                    ? Session::get('finishProfileModal')
-                    : false;
-            },
-            'emailVerifyModal' => function () {
-                return Session::get('emailVerifyModal')
-                    ? Session::get('emailVerifyModal')
-                    : false;
-            },
+            'active_route' => 'test'
         ]);
 
     }
