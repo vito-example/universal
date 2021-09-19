@@ -162,7 +162,7 @@ class LandingPageController extends Controller
         $blogs = $blogs->with([
             'translations',
             'images'
-        ])->active()->orderBy('created_at','desc')->paginate($request->get('total', 9));
+        ])->active()->orderBy('created_at','desc')->paginate($request->get('total', 1));
 
 
 

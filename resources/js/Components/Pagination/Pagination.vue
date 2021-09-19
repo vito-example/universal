@@ -1,24 +1,29 @@
 <template>
-    <nav>
-        <ul class="pagination">
-            <li
+    <div class="paginations flex center margin_bottom">
+
+            <template
                 v-for="(link, index) in links.slice(1, -1)"
-                class="page-item"
-                :class="link.active ? 'active' : ''"
                 :key="index"
             >
-                <a class="page-link" :href="link.url">
-                    {{ link.label }}
-                </a>
-            </li>
-        </ul>
-    </nav>
+                <inertia-link
+                    class="page_number medium flex center main_blue"
+                    :class="link.active ? 'active' : ''"
+                              :href="link.url">
+                    {{ label(link.label) }}
+                </inertia-link>
+            </template>
+    </div>
 </template>
 
 <script>
 export default {
     props: {
         links: Array
+    },
+    methods: {
+        label(label) {
+            return parseInt(label) < 10 ? `0${label}` : label;
+        }
     }
 }
 </script>

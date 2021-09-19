@@ -13,15 +13,12 @@
                         class="margin-bottom-sm-50"
                     />
                 </div>
-
-                <div class="paginations flex center margin_bottom">
-                    <button class="page_number medium flex center main_blue active">
-                        01
-                    </button>
-                    <button class="page_number medium flex center main_blue">02</button>
-                    <button class="page_number medium flex center main_blue">03</button>
-                    <button class="page_number medium flex center main_blue">04</button>
-                </div>
+                <pagination
+                    :current-page="items.current_page"
+                    :per-page="items.per_page"
+                    :total="items.total"
+                    :links="items.links"
+                />
             </section>
         </template>
     </landing>
@@ -30,12 +27,14 @@
 import Landing from "@/Layouts/Landing"
 import NewsItem from "@/Components/News/NewsItem"
 import Breadcrumb from "@/Components/BreadcrumbItem"
+import Pagination from "@/Components/Pagination/Pagination";
 
 export default {
     components: {
         Landing,
         NewsItem,
-        Breadcrumb
+        Breadcrumb,
+        Pagination
     },
     props: {
         items: {
