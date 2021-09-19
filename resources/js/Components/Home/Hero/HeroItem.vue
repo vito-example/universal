@@ -1,40 +1,26 @@
 <template>
-    <slide>
-        <div class="container grid grid-2 grid-sm-1">
-            <div class="hero__content padding-right-80 padding-right-md-0">
-                <h2
-                        class="color-dark-green font-size-xxl font-weight-600 line-height-58"
-                        data-aos="fade-left"
-                        data-aos-delay="200"
-                >
-                    {{ title }}
-                </h2>
-                <div
-                        class="hero__text color-dark-green line-height-22 padding-top-26"
-                        v-html="description"
-                        data-aos="fade-down"
-                        data-aos-delay="700"
-                />
-
-                <inertia-link
-                        :href="buttonLink"
-                        class="button button--primary button--shadow button--border margin-top-38"
-                        data-aos="fade-down"
-                        data-aos-delay="1200"
-                >
-                    {{ buttonText }}
-                </inertia-link>
-            </div>
-
-            <div
-                    class="hero__image flex justify-end"
-                    data-aos="fade-right"
-                    data-aos-delay="200"
-            >
-                <lazy-image :src="image" />
+    <div class="slide">
+        <img class="bg" :src="image" alt="" />
+        <div class="showcase_overlay">
+            <div class="flex center hero_content wrapper">
+                <div class="text_bg bold">{{backgroundTitle}}</div>
+                <div class="ab_title bold">{{title}}</div>
+                <div class="title bold" v-html="description">
+                </div>
+                <div class="sub_title dc" style="max-width: 609px" v-html="content">
+                </div>
+                <div class="hero_btns flex">
+                    <a href="#">
+                        <button class="main_btn read_more">Read More</button>
+                    </a>
+                    <a href="contact.html">
+                        <button class="main_btn contact">Contact Us</button>
+                    </a>
+                </div>
             </div>
         </div>
-    </slide>
+    </div>
+
 </template>
 
 <script>
@@ -58,6 +44,10 @@ export default {
     },
 
     computed: {
+        backgroundTitle () {
+            return this.getValueByFields('background_title')
+        },
+
         title () {
             return this.getValueByFields('title')
         },
@@ -66,12 +56,8 @@ export default {
             return this.getValueByFields('description')
         },
 
-        buttonText () {
-            return this.getValueByFields('button_text')
-        },
-
-        buttonLink () {
-            return this.getValueByFields('button_link')
+        content () {
+            return this.getValueByFields('content')
         },
 
         image () {

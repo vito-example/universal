@@ -5,6 +5,11 @@
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="shortcut icon" type="image/x-icon" href="{{ asset('logo/favicon.ico') }}">
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+        />
         <link rel="stylesheet" href="{{ mix('css/styles.css') }}">
         <meta name="robots" content="noindex, nofollow" />
 
@@ -22,15 +27,16 @@
         @endif
         <!-- Scripts -->
         @routes
+        <script src="{{asset('../landing_resources/js/jquery-1.11.0.min.js')}}"></script>
+        <script src="{{asset('../landing_resources/js/jquery-migrate-1.2.1.min.js')}}"></script>
+        <script src="{{asset('../landing_resources/js/slick.min.js')}}"></script>
+
+        <script src="{{asset('../landing_resources/js/general.js')}}"></script>
+        <script src="{{asset('../landing_resources/js/slide.js')}}"></script>
         <script src="{{ mix('js/app.js') }}" defer></script>
+
     </head>
     <body class="font-sans antialiased">
         @inertia
     </body>
-    <script src="{{asset('../landing_resources/js/jquery-1.11.0.min.js')}}"></script>
-    <script src="{{asset('../landing_resources/js/jquery-migrate-1.2.1.min.js')}}"></script>
-    <script src="{{asset('../landing_resources/js/slick.min.js')}}"></script>
-
-    <script src="{{asset('../landing_resources/js/general.js')}}"></script>
-    <script src="{{asset('../landing_resources/js/slide.js')}}"></script>
 </html>

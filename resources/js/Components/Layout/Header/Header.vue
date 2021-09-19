@@ -1,28 +1,4 @@
 <template>
-    <!--    <header class="header">-->
-    <!--            <div class="show-md-down">-->
-    <!--                <button-->
-    <!--                        class="button button&#45;&#45;link padding-0"-->
-    <!--                        v-if="!burgerMenuVisible"-->
-    <!--                        @click="onShowBurgerMenu"-->
-    <!--                >-->
-    <!--                    <svg width="21" height="24" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">-->
-    <!--                        <path d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z" fill="black"/>-->
-    <!--                    </svg>-->
-    <!--                </button>-->
-
-    <!--                <button-->
-    <!--                        class="button button&#45;&#45;link padding-0"-->
-    <!--                        v-if="burgerMenuVisible"-->
-    <!--                        @click="onShowBurgerMenu"-->
-    <!--                >-->
-    <!--                    <svg width="18" height="24" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">-->
-    <!--                        <path d="M1 13.5L13 1.5M1 1.5L13 13.5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>-->
-    <!--                    </svg>-->
-    <!--                </button>-->
-    <!--            </div>-->
-    <!--&lt;!&ndash;        <burger-menu v-if="burgerMenuVisible" />&ndash;&gt;-->
-    <!--    </header>-->
     <header class="header">
         <div class="header_top_slider flex slick-initialized slick-slider">
             <a :href="'tel://' + getValueByFields(contact.fields,'phone')" target="_blank" class="flex info">
@@ -98,7 +74,7 @@
                 <inertia-link :href="route('home.index')">
                     <div class="nav main_blue flex center">{{ __('Projects') }}</div>
                 </inertia-link>
-                <inertia-link :href="route('home.index')">
+                <inertia-link :href="route('blog.index')">
                     <div class="nav main_blue flex center">{{ __('Blog') }}</div>
                 </inertia-link>
                 <inertia-link :href="route('home.index')">

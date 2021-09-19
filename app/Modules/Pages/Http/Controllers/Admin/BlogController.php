@@ -3,7 +3,6 @@
 namespace App\Modules\Pages\Http\Controllers\Admin;
 
 use App\Modules\Admin\Http\Controllers\BaseController;
-use App\Modules\Customer\Http\Resources\Direction\DirectionListResource;
 use App\Modules\Pages\Helpers\BlogHelper;
 use App\Modules\Pages\Http\Requests\Admin\Blog\BlogStoreRequest;
 use App\Modules\Pages\Models\Blog;
@@ -15,7 +14,6 @@ use GetImageWithType;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-use App\Http\Controllers\Controller;
 use Log;
 use TranslationFieldsWithLocale;
 
@@ -87,7 +85,6 @@ class BlogController extends BaseController
         try {
             $this->baseData['routes'] = BlogHelper::getRoutes();
             $this->baseData['routes']['upload_image'] = route(config('cms.admin.base_route_name') . '.image.upload');
-            $this->baseData['directions'] = (new DirectionListResource())->getAndSetCrudResources(0, true, true)->toArray();
             $this->baseData['options']['galleries_attributes'] = config('blog.galleries_attributes');
 
             if ($request->get('id')) {

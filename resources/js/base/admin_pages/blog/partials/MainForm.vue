@@ -38,17 +38,6 @@
 
                                 <template v-if="locale == defaultLocale">
                                     <div class="form-group dashed">
-                                        <label class="col-md-1 control-label">{{ lang.blog_directions }}</label>
-                                        <div class="col-md-4 uppercase-medium">
-                                            <treeselect
-                                                v-model="form.directions"
-                                                :multiple="true"
-                                                :options="directions"
-                                                :value-consists-of="valueConsistsOf"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div class="form-group dashed">
                                         <label class="col-md-1 control-label">{{ lang.date }}:</label>
                                         <div class="col-md-10 uppercase-medium">
                                             <el-date-picker
@@ -114,7 +103,6 @@ export default {
         'routes',
         'updateData',
         'item',
-        'directions',
         'options',
         'editorConfig'
     ],

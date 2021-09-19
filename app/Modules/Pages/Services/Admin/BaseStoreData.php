@@ -148,14 +148,6 @@ abstract class BaseStoreData
         } else {
             $this->entity = $this->createEntityData($saveData);
         }
-
-        // remove old directions
-        $this->entity->directions()->detach();
-
-        if (isset($this->infoData['directions'])) {
-            // attach new directions
-            $this->entity->directions()->sync(array_unique($this->infoData['directions']));
-        }
     }
 
     protected function saveRelationData()

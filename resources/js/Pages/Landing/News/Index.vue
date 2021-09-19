@@ -1,83 +1,41 @@
 <template>
     <landing>
         <template v-slot:main>
-            <breadcrumb :active="__('სიახლეები')" />
-            <div class="content container">
-              <div class="page-filter">
-                <div class="row margin-y-40">
-                  <div class="col-3 col-lg-3">
-                      <SelectTree
-                          :options="directions"
-                          :defaultValues="form.directions"
-                          :default="__('აირჩიეთ მიმართულება')"
-                          class="select"
-                          v-if="!filterDrawer"
-                          @input="changeDirections"
-                      />
-                  </div>
+            <breadcrumb :item="page[0]['fields']" />
+            <section class="blogs_page wrapper">
+                <div
+                    v-for="item in items.data"
+                    :key="item.id"
+                    class="blog_item"
+                >
+                    <news-item
+                        :item="item"
+                        class="margin-bottom-sm-50"
+                    />
                 </div>
-              </div>
 
-              <button
-                  type="button"
-                  class="filter-button button button--link color-black font-size-16 text-decoration-none flex items-center margin-y-40"
-                  @click="filterDrawer = !filterDrawer"
-              >
-                <FilterIcon />
-                <span class="padding-left-10">{{ __('ფილტრი') }}</span>
-              </button>
-
-              <div v-if="filterDrawer" class="mobile-filter">
-                <div class="mobile-filter__inner">
-
-                  <div>
-                      <SelectTree
-                          :options="directions"
-                          :defaultValues="form.directions"
-                          :default="__('აირჩიეთ მიმართულება')"
-                          class="select"
-                          @input="changeDirections"
-                      />
-                  </div>
-
-                  <hr class="margin-y-30">
-
-                    <button type="button" @click="submitFilter(1,-1,true)" class="button button--primary button--shadow button--border width-full">{{__('დადასტურება')}}</button>
+                <div class="paginations flex center margin_bottom">
+                    <button class="page_number medium flex center main_blue active">
+                        01
+                    </button>
+                    <button class="page_number medium flex center main_blue">02</button>
+                    <button class="page_number medium flex center main_blue">03</button>
+                    <button class="page_number medium flex center main_blue">04</button>
                 </div>
-              </div>
-
-                <div class="row">
-                    <div
-                            v-for="item in items.data"
-                            :key="item.id"
-                            class="col-4 col-lg-4 col-md-4 col-sm-12"
-                    >
-                        <news-item
-                                :item="item"
-                                class="margin-bottom-sm-50"
-                        />
-                    </div>
-                </div>
-            </div>
+            </section>
         </template>
     </landing>
 </template>
 <script>
 import Landing from "@/Layouts/Landing"
-import Breadcrumb from "@/Components/Web/Breadcrumb/Breadcrumb"
-import SelectObject from "@/Components/Web/Select/SelectObject"
-import FilterIcon from "@/Components/Web/Icons/Filter"
-import SelectTree from "@/Components/Web/Select/SelectTree"
 import NewsItem from "@/Components/News/NewsItem"
+import Breadcrumb from "@/Components/BreadcrumbItem"
 
 export default {
     components: {
         Landing,
-        Breadcrumb,
-        SelectObject,
-        FilterIcon,
-        SelectTree,
-        NewsItem
+        NewsItem,
+        Breadcrumb
     },
     props: {
         items: {
@@ -86,44 +44,8 @@ export default {
         route: {
             type: String
         },
-        directions: {
+        page: {
             type: Array
-        },
-        selectedDirections: {
-            type: String
-        },
-    },
-    data() {
-        return {
-            filterDrawer: false,
-            form: this.$inertia.form({
-                directions:  this.selectedDirections ?? [],
-            }),
-        }
-    },
-    watch: {
-        'form.directions'(value, old) {
-            this.submitFilter(value,old)
-        },
-    },
-    methods: {
-        getSelectedValue(item) {
-            if (item.selected) {
-                this.form[`${item.model}`] = item.selected.value;
-            }
-        },
-        submitFilter(value, old,mobile = false) {
-            if (value !== old && (!this.filterDrawer || mobile)) {
-                this.filterDrawer = false;
-                this.form.get(this.route, {
-                    onSuccess: () => console.log('success'),
-                })
-            }
-        },
-        changeDirections(item){
-            if (item.length !== undefined) {
-                this.form.directions = item;
-            }
         }
     }
 }

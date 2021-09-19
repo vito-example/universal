@@ -10,9 +10,5 @@ Route::namespace('Api\Client')->group(function(){
         Route::get('{module}','PageController@index')->name('index');
         Route::get('type','PageController@pageType');
     });
-    Route::prefix('subscribe')->group(function(){
-        Route::post('active','SubscriberController@active');
-        Route::post('disable','SubscriberController@disable');
-    });
 
 });

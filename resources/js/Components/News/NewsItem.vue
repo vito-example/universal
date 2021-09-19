@@ -1,30 +1,18 @@
 <template>
-    <div class="card border-0">
-        <inertia-link
-                :href="showUrl"
-                class="card__image"
-                :title="title"
+    <lazy-image
+        :src="image"
+        :show-placeholder="true"
+        :alt="title"
+    />
+    <div class="cap">
+        <div class="date">{{ createdAt}}</div>
+        <div class="bold main_blue title">{{title}}</div>
+        <div class="para" v-html="description">
+        </div>
+        <inertia-link :href="showUrl" class="read_more_rotate main_blue medium">
+            {{__('Read More')}}
+        </inertia-link
         >
-            <lazy-image
-                    :src="image"
-                    :show-placeholder="true"
-                    :alt="title"
-            />
-        </inertia-link>
-
-        <time class="card__date padding-top-21">{{ createdAt }}</time>
-
-        <inertia-link
-                :href="showUrl"
-                :title="title"
-                class="text-decoration-none"
-        >
-            <h4 class="card__title line-height-22 padding-top-14">{{ title }}</h4>
-        </inertia-link>
-        <div
-                class="card__text color-dark-green line-height-22 padding-top-0 opacity-60"
-                v-html="description"
-        />
     </div>
 </template>
 

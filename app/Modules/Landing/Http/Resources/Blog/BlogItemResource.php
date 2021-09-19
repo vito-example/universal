@@ -39,7 +39,7 @@ class BlogItemResource
             'title' => $this->item->title,
             'description' => Str::limit($this->item->description, 112),
             'profile_image' => $this->item->getImageByKey('profile'),
-            'show_url'  =>route('news.show',generateSlug($this->item->id,$this->item->title)),
+            'show_url'  =>route('blog.show',generateSlug($this->item->id,$this->item->title)),
             'created_at' => $this->getDateFormat(),
         ];
     }

@@ -12,11 +12,6 @@ Route::name(config('cms.admin.base_route_name') . '.')->group(function(){
         Route::post('/delete', $controller . '@destroy')->name('delete')->middleware(['permission:'.getPermissionKey($moduleName, 'delete', true)]);;
         Route::post('/update-status', $controller . '@updateStatus')->name('update_status');
     });
-    Route::name('subscriber.')->prefix('subscribers')->group(function() {
-        $contrl = 'SubscriberController';
-        Route::get('/', $contrl . '@index')->name('index');
-        Route::get('/export', $contrl . '@export')->name('export');
-    });
     Route::name('page.')->prefix('pages')->group(function() {
         $contrl = 'PageController';
         Route::post('/create-data', $contrl . '@createData')->name('create_data');

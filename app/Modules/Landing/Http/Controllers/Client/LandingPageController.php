@@ -154,21 +154,10 @@ class LandingPageController extends Controller
      *
      * @return Response
      */
-    public function news(Request $request): \Inertia\Response
+    public function blog(Request $request): \Inertia\Response
     {
         /** @var $blogs LengthAwarePaginator */
         $blogs = Blog::query();
-        if ($request->directions) {
-            $directions = $request->directions;
-            foreach ($directions as $direction) {
-                $blogs->whereHas('directions', function ($query) use ($direction) {
-                    $query->where('direction_id', $direction);
-                });
-            }
-        }
-
-        $directions = (new DirectionListResource())->getAndSetCrudResources(0, true, true)->toArray();
-        $this->parseTree($directions);
 
         $blogs = $blogs->with([
             'translations',
@@ -188,12 +177,14 @@ class LandingPageController extends Controller
             $view->with('allSeoData', $allSeoData);
         });
 
+        $page = Page::where('name', 'blog')->first();
+        $pageData = $page ? (new PageMetaInfoResource($page->meta))->toArray($request) : [];
+
         return Jetstream::inertia()->render($request, 'Landing/News/Index', [
             'items' => $blogs,
             'seo' => $allSeoData,
-            'route' => route('news.index'),
-            'directions' => (new DirectionListResource())->getAndSetCrudResources(0, true, true)->toArray(),
-            'selectedDirections' => $request->directions ?? [],
+            'route' => route('blog.index'),
+            'page' => $pageData
         ]);
     }
 
@@ -203,7 +194,7 @@ class LandingPageController extends Controller
      *
      * @return Response
      */
-    public function newsView(Request $request, $slug): \Inertia\Response
+    public function blogView(Request $request, $slug): \Inertia\Response
     {
         $blog = Blog::with([
             'translations',
@@ -218,9 +209,13 @@ class LandingPageController extends Controller
             $view->with('allSeoData', $allSeoData);
         });
 
+        $page = Page::where('name', 'blog')->first();
+        $pageData = $page ? (new PageMetaInfoResource($page->meta))->toArray($request) : [];
+
         return Jetstream::inertia()->render($request, 'Landing/News/Show', [
             'item' => (new BlogItemResource($blog))->toArrayForShow(),
-            'seo' => $allSeoData
+            'seo' => $allSeoData,
+            'page' => $pageData
         ]);
     }
 

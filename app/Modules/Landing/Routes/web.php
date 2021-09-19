@@ -29,9 +29,9 @@ Route::group(['middleware' => config('fortify.middleware', ['web'])], function (
     Route::get('contact',[LandingPageController::class,'contact'])->name('contact.index');
     Route::post('/contact', [LandingPageController::class, 'contactSend'])->name('contact.send');
 
-    Route::prefix('news')->group(function () {
-        Route::get('',[LandingPageController::class, 'news'])->name('news.index');
-        Route::get('{slug}',[LandingPageController::class, 'newsView'])->name('news.show');
+    Route::prefix('blog')->group(function () {
+        Route::get('',[LandingPageController::class, 'blog'])->name('blog.index');
+        Route::get('{slug}',[LandingPageController::class, 'blogView'])->name('blog.show');
     });
 
     Route::prefix('trainers')->group(function () {

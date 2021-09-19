@@ -36,7 +36,6 @@
                             :routes="routes"
                             :options="options"
                             :updateData="updateData"
-                            :directions="directions"
                             :item="this.form && this.form.main ? this.form.main : undefined"
                         ></main-form>
 
@@ -113,7 +112,6 @@ export default {
             routes: {},
             options: {},
             locales: [],
-            directions: {},
             /**
              * Form data
              */
@@ -154,7 +152,6 @@ export default {
                     this.options = data.options;
                     this.default_locale = data.default_locale;
                     this.locales = data.locales;
-                    this.directions = data.directions;
                     this.editorConfig = data.editor_config
                     if (data.item) {
                         this.form = data.item;

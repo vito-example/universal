@@ -19,9 +19,33 @@ return [
                         'is_required' => false,
                         'additional_fields' => [
                             [
+                                'label' => 'background_title',
+                                'name' => 'background_title',
+                                'type' => 'text',
+                                'is_translation' => true,
+                                'is_required' => false,
+                                'locale' => []
+                            ],
+                            [
                                 'label' => 'title',
                                 'name' => 'title',
                                 'type' => 'text',
+                                'is_translation' => true,
+                                'is_required' => false,
+                                'locale' => []
+                            ],
+                            [
+                                'label' => 'description',
+                                'name' => 'description',
+                                'type' => 'wysiwig',
+                                'is_translation' => true,
+                                'is_required' => false,
+                                'locale' => []
+                            ],
+                            [
+                                'label' => 'content',
+                                'name' => 'content',
+                                'type' => 'wysiwig',
                                 'is_translation' => true,
                                 'is_required' => false,
                                 'locale' => []
@@ -251,8 +275,6 @@ return [
                     ],
                 ]
             ],
-
-
         ],
         'project' => [
             'hero' => [
@@ -273,6 +295,14 @@ return [
                         'label' => 'title',
                         'name' => 'title',
                         'type' => 'text',
+                        'is_translation' => true,
+                        'is_required' => false,
+                        'locale' => []
+                    ],
+                    [
+                        'label' => 'description',
+                        'name' => 'description',
+                        'type' => 'wysiwig',
                         'is_translation' => true,
                         'is_required' => false,
                         'locale' => []
@@ -312,6 +342,14 @@ return [
                         'locale' => []
                     ],
                     [
+                        'label' => 'description',
+                        'name' => 'description',
+                        'type' => 'wysiwig',
+                        'is_translation' => true,
+                        'is_required' => false,
+                        'locale' => []
+                    ],
+                    [
                         'label' => 'banner_image',
                         'name' => 'banner_image',
                         'type' => 'image',
@@ -346,6 +384,14 @@ return [
                         'locale' => []
                     ],
                     [
+                        'label' => 'description',
+                        'name' => 'description',
+                        'type' => 'wysiwig',
+                        'is_translation' => true,
+                        'is_required' => false,
+                        'locale' => []
+                    ],
+                    [
                         'label' => 'banner_image',
                         'name' => 'banner_image',
                         'type' => 'image',
@@ -375,6 +421,14 @@ return [
                         'label' => 'title',
                         'name' => 'title',
                         'type' => 'text',
+                        'is_translation' => true,
+                        'is_required' => false,
+                        'locale' => []
+                    ],
+                    [
+                        'label' => 'description',
+                        'name' => 'description',
+                        'type' => 'wysiwig',
                         'is_translation' => true,
                         'is_required' => false,
                         'locale' => []
