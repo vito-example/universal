@@ -79,11 +79,11 @@
                 <inertia-link :href="route('blog.index')">
                     <div class="nav main_blue flex center" :class="activeMenu(route('blog.index',[],false)) ? 'current' : ''">{{ __('Blog') }}</div>
                 </inertia-link>
-                <inertia-link :href="route('home.index')">
-                    <div class="nav main_blue flex center" :class="activeMenu(route('home.index',[],false)) ? 'current' : ''">{{ __('Team') }}</div>
+                <inertia-link :href="route('team.index')">
+                    <div class="nav main_blue flex center" :class="activeMenu(route('team.index',[],false)) ? 'current' : ''">{{ __('Team') }}</div>
                 </inertia-link>
-                <inertia-link :href="route('home.index')">
-                    <div class="nav main_blue flex center" :class="activeMenu(route('home.index',[],false)) ? 'current' : ''">{{ __('About us') }}</div>
+                <inertia-link :href="route('about.index')">
+                    <div class="nav main_blue flex center" :class="activeMenu(route('about.index',[],false)) ? 'current' : ''">{{ __('About us') }}</div>
                 </inertia-link>
                 <inertia-link :href="route('home.index')">
                     <div class="nav main_blue flex center" :class="activeMenu(route('home.index',[],false)) ? 'current' : ''">{{ __('Contact us') }}</div>

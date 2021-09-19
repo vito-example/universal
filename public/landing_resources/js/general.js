@@ -44,9 +44,10 @@ $(function () {
             });
         }
 
-    // mobile menu
+        // mobile menu
         if (menuBtn) {
             menuBtn.addEventListener("click", () => {
+                console.log(12345)
                 menuBtn.classList.toggle("clicked");
                 nabvar.classList.toggle("open");
             });

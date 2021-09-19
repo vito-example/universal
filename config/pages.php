@@ -454,12 +454,34 @@ return [
                 ],
                 'inputs' => [
                     [
+                        'label' => 'title',
+                        'name' => 'title',
+                        'type' => 'text',
+                        'is_translation' => true,
+                        'is_required' => false
+                    ],
+                    [
+                        'label' => 'description',
+                        'name' => 'description',
+                        'type' => 'text',
+                        'is_translation' => true,
+                        'is_required' => false
+                    ],
+                    [
                         'label' => 'content',
                         'name' => 'content',
                         'type' => 'wysiwig',
                         'is_translation' => true,
                         'is_required' => false
-                    ]
+                    ],
+                    [
+                        'label' => 'banner_image',
+                        'name' => 'banner_image',
+                        'type' => 'image',
+                        'is_translation' => false,
+                        'is_required' => false,
+                        'image' => []
+                    ],
                 ]
             ],
             'content_2' => [
@@ -473,12 +495,27 @@ return [
                 ],
                 'inputs' => [
                     [
+                        'label' => 'description',
+                        'name' => 'description',
+                        'type' => 'text',
+                        'is_translation' => true,
+                        'is_required' => false
+                    ],
+                    [
                         'label' => 'content',
                         'name' => 'content',
                         'type' => 'wysiwig',
                         'is_translation' => true,
                         'is_required' => false
-                    ]
+                    ],
+                    [
+                        'label' => 'banner_image',
+                        'name' => 'banner_image',
+                        'type' => 'image',
+                        'is_translation' => false,
+                        'is_required' => false,
+                        'image' => []
+                    ],
                 ]
             ],
         ],

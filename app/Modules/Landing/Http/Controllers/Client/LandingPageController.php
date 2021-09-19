@@ -5,11 +5,13 @@ namespace App\Modules\Landing\Http\Controllers\Client;
 use App\Modules\Landing\Http\Requests\ContactSendRequest;
 use App\Modules\Landing\Http\Resources\Blog\BlogItemResource;
 use App\Modules\Landing\Http\Resources\Project\ProjectItemResource;
+use App\Modules\Landing\Http\Resources\Team\TeamItemResource;
 use App\Modules\Landing\Mail\ContactSend;
 use App\Modules\Pages\Http\Resources\Client\PageMetaInfoResource;
 use App\Modules\Pages\Models\Blog;
 use App\Modules\Pages\Models\Page;
 use App\Modules\Pages\Models\Project;
+use App\Modules\Pages\Models\Team;
 use App\Modules\Pages\Services\Client\BlogData;
 use Butschster\Head\Contracts\MetaTags\MetaInterface;
 use Illuminate\Http\RedirectResponse;
@@ -80,7 +82,7 @@ class LandingPageController extends Controller
      *
      * @return \Inertia\Response
      */
-    public function about(Request $request)
+    public function about(Request $request): Response
     {
         $page = Page::where('name', 'about')->first();
         $pageData = $page ? (new PageMetaInfoResource($page->meta))->toArray($request) : [];
@@ -285,6 +287,74 @@ class LandingPageController extends Controller
 
         return Jetstream::inertia()->render($request, 'Landing/Project/Show', [
             'item' => (new ProjectItemResource($project))->toArrayForShow(),
+            'seo' => $allSeoData,
+            'page' => $pageData
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function team(Request $request): \Inertia\Response
+    {
+        /** @var $teams LengthAwarePaginator */
+        $teams = Team::query();
+
+        $teams = $teams->with([
+            'translations',
+            'images'
+        ])->active()->orderBy('created_at','desc')->paginate(45);
+
+        $teamsData = collect();
+        foreach ($teams->getIterator() as $team) {
+            $teamsData->push((new TeamItemResource($team))->toListItem());
+        }
+        $teams->setCollection($teamsData);
+
+        $allSeoData = (new TeamItemResource())->toListSeoData();
+        View::composer('app', function ($view) use ($allSeoData) {
+            $view->with('allSeoData', $allSeoData);
+        });
+
+        $page = Page::where('name', 'team')->first();
+        $pageData = $page ? (new PageMetaInfoResource($page->meta))->toArray($request) : [];
+
+        return Jetstream::inertia()->render($request, 'Landing/Team/Index', [
+            'items' => $teamsData,
+            'seo' => $allSeoData,
+            'route' => route('team.index'),
+            'page' => $pageData
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @param $slug
+     *
+     * @return Response
+     */
+    public function teamView(Request $request, $slug): \Inertia\Response
+    {
+        $team = Team::with([
+            'translations',
+            'images'
+        ])
+            ->active()
+            ->where('id', getIdFromSlug($slug))->firstOrFail();
+
+
+        $allSeoData = (new TeamItemResource($team))->toSeoData();
+        View::composer('app', function ($view) use ($allSeoData) {
+            $view->with('allSeoData', $allSeoData);
+        });
+
+        $page = Page::where('name', 'team')->first();
+        $pageData = $page ? (new PageMetaInfoResource($page->meta))->toArray($request) : [];
+
+        return Jetstream::inertia()->render($request, 'Landing/Team/Show', [
+            'item' => (new TeamItemResource($team))->toArrayForShow(),
             'seo' => $allSeoData,
             'page' => $pageData
         ]);

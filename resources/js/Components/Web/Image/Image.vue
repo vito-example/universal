@@ -26,7 +26,7 @@ export default {
 
     computed: {
         placeholder () {
-            return this.showPlaceholder ? '/placeholders/default.svg' : ''
+            return this.showPlaceholder ? '/placeholders/blank.gif' : ''
         }
     }
 }

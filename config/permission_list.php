@@ -37,4 +37,7 @@ return [
     'project'     => [
         'default'   => $default_permissions
     ],
+    'team'     => [
+        'default'   => $default_permissions
+    ],
 ];
