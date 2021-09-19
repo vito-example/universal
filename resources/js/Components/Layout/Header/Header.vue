@@ -69,22 +69,24 @@
             </inertia-link>
             <div class="navbar part">
                 <inertia-link :href="route('home.index')">
-                    <div class="nav main_blue flex center current">{{ __('Home') }}</div>
+                    <div class="nav main_blue flex center" :class="activeMenu(route('home.index',[],false)) ? 'current' : ''">
+                        {{ __('Home') }}
+                    </div>
                 </inertia-link>
                 <inertia-link :href="route('home.index')">
-                    <div class="nav main_blue flex center">{{ __('Projects') }}</div>
+                    <div class="nav main_blue flex center" :class="activeMenu(route('home.index',[],false)) ? 'current' : ''">{{ __('Projects') }}</div>
                 </inertia-link>
                 <inertia-link :href="route('blog.index')">
-                    <div class="nav main_blue flex center">{{ __('Blog') }}</div>
+                    <div class="nav main_blue flex center" :class="activeMenu(route('blog.index',[],false)) ? 'current' : ''">{{ __('Blog') }}</div>
                 </inertia-link>
                 <inertia-link :href="route('home.index')">
-                    <div class="nav main_blue flex center">{{ __('Team') }}</div>
+                    <div class="nav main_blue flex center" :class="activeMenu(route('home.index',[],false)) ? 'current' : ''">{{ __('Team') }}</div>
                 </inertia-link>
                 <inertia-link :href="route('home.index')">
-                    <div class="nav main_blue flex center">{{ __('About us') }}</div>
+                    <div class="nav main_blue flex center" :class="activeMenu(route('home.index',[],false)) ? 'current' : ''">{{ __('About us') }}</div>
                 </inertia-link>
                 <inertia-link :href="route('home.index')">
-                    <div class="nav main_blue flex center">{{ __('Contact us') }}</div>
+                    <div class="nav main_blue flex center" :class="activeMenu(route('home.index',[],false)) ? 'current' : ''">{{ __('Contact us') }}</div>
                 </inertia-link>
             </div>
             <button id="menu_btn"></button>
@@ -139,6 +141,9 @@ export default {
         },
         onShowBurgerMenu() {
             this.burgerMenuVisible = !this.burgerMenuVisible
+        },
+        activeMenu(route) {
+            return window.location.pathname === route
         }
     },
 

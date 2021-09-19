@@ -16,7 +16,6 @@ export default {
     components: {},
     methods: {
         isActive(locale) {
-            console.log(this.$page)
             return this.$page.props.locale === locale ? 'on' : '';
         }
     }
