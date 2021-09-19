@@ -121,12 +121,4 @@ class Blog extends Model
     {
         return $this->morphMany(Image::class, 'imageable');
     }
-
-    /**
-     * @return BelongsToMany
-     */
-    public function directions(): BelongsToMany
-    {
-        return $this->belongsToMany(Direction::class, 'blog_directions');
-    }
 }

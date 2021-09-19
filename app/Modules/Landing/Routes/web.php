@@ -34,39 +34,8 @@ Route::group(['middleware' => config('fortify.middleware', ['web'])], function (
         Route::get('{slug}',[LandingPageController::class, 'blogView'])->name('blog.show');
     });
 
-    Route::prefix('trainers')->group(function () {
-        Route::get('',[LandingPageController::class, 'trainers'])->name('trainers.index');
-        Route::get('/{slug}',[LandingPageController::class, 'trainersShow'])->name('trainers.show');
+    Route::prefix('project')->group(function () {
+        Route::get('',[LandingPageController::class, 'project'])->name('project.index');
+        Route::get('{slug}',[LandingPageController::class, 'projectView'])->name('project.show');
     });
-
-    Route::prefix('preview')->group(function () {
-        Route::get('',[PreviewPageController::class, 'home'])->name('preview.home');
-
-        Route::prefix('register')->group(function () {
-            Route::get('',[PreviewPageController::class, 'register'])->name('preview.register');
-        });
-
-        Route::prefix('trainings')->group(function () {
-            Route::get('',[PreviewPageController::class, 'trainings'])->name('preview.trainings');
-            Route::get('online',[PreviewPageController::class, 'trainings'])->name('preview.online');
-            Route::get('show',[PreviewPageController::class, 'trainingsView'])->name('preview.trainings.show');
-            Route::get('show/{register}',[PreviewPageController::class, 'trainingRegister'])->name('preview.trainings.register');
-        });
-
-        Route::prefix('trainers')->group(function () {
-            Route::get('',[PreviewPageController::class, 'trainers'])->name('preview.trainers');
-        });
-
-        Route::prefix('news')->group(function () {
-            Route::get('',[PreviewPageController::class, 'news'])->name('preview.news');
-            Route::get('show',[PreviewPageController::class, 'newsView'])->name('preview.news.show');
-        });
-
-        Route::get('about',[PreviewPageController::class,'about'])->name('preview.about');
-
-        Route::prefix('profile')->group(function () {
-            Route::get('',[PreviewPageController::class, 'profile'])->name('preview.profile');
-        });
-    });
-
 });

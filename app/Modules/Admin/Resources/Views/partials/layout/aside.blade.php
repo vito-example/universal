@@ -2,6 +2,22 @@
     <li class="sidebar-header">
         <span class="sidebar-header-options clearfix"><a href="javascript:void(0)" data-toggle="tooltip" title=""
                                                          data-original-title="Filter"></a></span>
+        <span class="sidebar-header-title">Dynamic Fields</span>
+    </li>
+    <li
+        {!! strpos(request()->route()->getName(), 'admin.blog.') !== false ? ' class="active"' : '' !!}>
+        <a href="{{route('admin.blog.index')}}"><i class="el-icon-link sidebar-nav-icon"></i>
+            <span class="sidebar-nav-mini-hide">@lang('admin.blogs.menu')</span></a>
+    </li>
+    <li
+        {!! strpos(request()->route()->getName(), 'admin.project.') !== false ? ' class="active"' : '' !!}>
+        <a href="{{route('admin.project.index')}}"><i class="el-icon-link sidebar-nav-icon"></i>
+            <span class="sidebar-nav-mini-hide">@lang('admin.projects.menu')</span></a>
+    </li>
+
+    <li class="sidebar-header">
+        <span class="sidebar-header-options clearfix"><a href="javascript:void(0)" data-toggle="tooltip" title=""
+                                                         data-original-title="Filter"></a></span>
         <span class="sidebar-header-title">Pages</span>
     </li>
     @foreach(App\Modules\Pages\Models\Page::getPages() as $pageName)
@@ -11,13 +27,6 @@
                 <span class="sidebar-nav-mini-hide">@lang('admin.'.$pageName.'.menu')</span></a>
         </li>
     @endforeach
-    @can (getPermissionKey('blog', 'index', true))
-        <li
-            {!! strpos(request()->route()->getName(), 'admin.blog.') !== false ? ' class="active"' : '' !!}>
-            <a href="{{route('admin.blog.index')}}"><i class="el-icon-link sidebar-nav-icon"></i>
-                <span class="sidebar-nav-mini-hide">@lang('admin.blog.menu')</span></a>
-        </li>
-    @endif
     <li class="sidebar-header">
         <span class="sidebar-header-options clearfix"><a href="javascript:void(0)" data-toggle="tooltip" title=""
                                                          data-original-title="Filter"></a></span>

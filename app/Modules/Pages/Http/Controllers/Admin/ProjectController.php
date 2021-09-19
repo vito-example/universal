@@ -1,13 +1,20 @@
 <?php
+/**
+ *  app\Modules\Pages\Http\Controllers\Admin\ProjectController.php
+ *
+ * Date-Time: 9/19/2021
+ * Time: 1:59 PM
+ * @author Vito Makhatadze <vitomakhatadze@gmail.com>
+ */
 
 namespace App\Modules\Pages\Http\Controllers\Admin;
 
 use App\Modules\Admin\Http\Controllers\BaseController;
-use App\Modules\Pages\Helpers\BlogHelper;
-use App\Modules\Pages\Http\Requests\Admin\Blog\BlogStoreRequest;
-use App\Modules\Pages\Models\Blog;
-use App\Modules\Pages\Models\Translations\BlogTranslation;
-use App\Modules\Pages\Services\Admin\BlogStoreData;
+use App\Modules\Pages\Helpers\ProjectHelper;
+use App\Modules\Pages\Http\Requests\Admin\Project\ProjectStoreRequest;
+use App\Modules\Pages\Models\Project;
+use App\Modules\Pages\Models\Translations\ProjectTranslation;
+use App\Modules\Pages\Services\Admin\ProjectStoreData;
 use App\Utilities\ServiceResponse;
 use Carbon\Carbon;
 use GetImageWithType;
@@ -17,7 +24,7 @@ use Illuminate\Http\Request;
 use Log;
 use TranslationFieldsWithLocale;
 
-class BlogController extends BaseController
+class ProjectController extends BaseController
 {
 
     protected string $baseModuleName = 'pages::';
@@ -25,12 +32,12 @@ class BlogController extends BaseController
     /**
      * @var string
      */
-    public $moduleTitle = 'blog';
+    public $moduleTitle = 'project';
 
     /**
      * @var string
      */
-    public $viewFolderName = 'blog';
+    public $viewFolderName = 'project';
 
     /**
      * AuthorController constructor.
@@ -41,9 +48,9 @@ class BlogController extends BaseController
         $this->successCreateText = $this->moduleTitle . $this->successCreateText;
         $this->successUpdateText = $this->moduleTitle . $this->successUpdateText;
         $this->successDeleteText = $this->moduleTitle . $this->successDeleteText;
-        $this->baseData['moduleKey'] = 'blog';
+        $this->baseData['moduleKey'] = 'project';
         $this->baseData['baseRouteName'] = $this->baseData['baseRouteName'] . '.' . $this->baseData['moduleKey'] . '.';
-        $this->baseData['trans_text'] = BlogHelper::getLang();
+        $this->baseData['trans_text'] = ProjectHelper::getLang();
     }
 
 
@@ -54,7 +61,7 @@ class BlogController extends BaseController
      */
     public function index(Request $request)
     {
-        $this->baseData['allData'] = Blog::orderBy('created_at', 'desc')->paginate(25);
+        $this->baseData['allData'] = Project::orderBy('created_at', 'desc')->paginate(25);
 
         return view($this->baseModuleName . $this->baseAdminViewName . $this->viewFolderName . '.index', $this->baseData);
     }
@@ -65,7 +72,7 @@ class BlogController extends BaseController
     public function create()
     {
         try {
-            $this->baseData['routes']['create_form_data'] = BlogHelper::getRoutes()['create_data'];
+            $this->baseData['routes']['create_form_data'] = ProjectHelper::getRoutes()['create_data'];
 
         } catch (\Exception $ex) {
             return view($this->baseModuleName . $this->baseAdminViewName . $this->viewFolderName . '.create', ServiceResponse::error($ex->getMessage()));
@@ -83,13 +90,13 @@ class BlogController extends BaseController
     public function createData(Request $request)
     {
         try {
-            $this->baseData['routes'] = BlogHelper::getRoutes();
+            $this->baseData['routes'] = ProjectHelper::getRoutes();
             $this->baseData['routes']['upload_image'] = route(config('cms.admin.base_route_name') . '.image.upload');
             $this->baseData['options']['galleries_attributes'] = config('blog.galleries_attributes');
 
             if ($request->get('id')) {
-                $item = Blog::findOrFail($request->get('id'))->load(['translations']);
-                $locales = TranslationFieldsWithLocale::setTranslations($item->translations)->setTranslationFields((new BlogTranslation())->getFillable())
+                $item = Project::findOrFail($request->get('id'))->load(['translations']);
+                $locales = TranslationFieldsWithLocale::setTranslations($item->translations)->setTranslationFields((new ProjectTranslation())->getFillable())
                     ->generateFieldsWithLocales()->getFieldsWithLocales();
                 $images = GetImageWithType::setImages($item->images->toArray() ?: [])->generateWithType()->getImagesWithType();
                 $this->baseData['item']['main'] = $locales;
@@ -115,13 +122,13 @@ class BlogController extends BaseController
     }
 
     /**
-     * @param BlogStoreRequest $request
+     * @param ProjectStoreRequest $request
      * @return JsonResponse
      */
-    public function store(BlogStoreRequest $request): JsonResponse
+    public function store(ProjectStoreRequest $request): JsonResponse
     {
         try {
-            (new BlogStoreData())
+            (new ProjectStoreData())
                 ->setEntityById($request->get('id'))
                 ->setInfoData($request->get('main'))
                 ->setSeoData($request->get('seo_meta'))
@@ -142,7 +149,7 @@ class BlogController extends BaseController
     public function edit($id = '')
     {
         try {
-            $this->baseData['routes']['create_form_data'] = BlogHelper::getRoutes()['create_data'];
+            $this->baseData['routes']['create_form_data'] = ProjectHelper::getRoutes()['create_data'];
 
             $this->baseData['id'] = $id;
         } catch (\Exception $ex) {
@@ -161,7 +168,7 @@ class BlogController extends BaseController
     public function destroy(Request $request)
     {
         try {
-            Blog::findOrFail($request->get('id'))->delete();
+            Project::findOrFail($request->get('id'))->delete();
         } catch (\Exception $ex) {
             return ServiceResponse::jsonNotification($ex->getMessage(), $ex->getCode(), []);
         }
@@ -173,10 +180,10 @@ class BlogController extends BaseController
      * @param Request $request
      * @return JsonResponse
      */
-    public function updateStatus(Request $request)
+    public function updateStatus(Request $request): JsonResponse
     {
         try {
-            Blog::findOrFail($request->get('id'))->update(['status' => $request->get('status')]);
+            Project::findOrFail($request->get('id'))->update(['status' => $request->get('status')]);
         } catch (\Exception $ex) {
             return ServiceResponse::jsonNotification($ex->getMessage(), $ex->getCode(), []);
         }

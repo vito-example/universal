@@ -4,7 +4,7 @@
 namespace App\Modules\Pages\Helpers;
 
 
-class BlogHelper
+class ProjectHelper
 {
     /**
      * @param string $baseRouteName
@@ -12,7 +12,7 @@ class BlogHelper
      *
      * @return array
      */
-    public static function getRoutes($baseRouteName = 'admin', $baseModuleName = 'blog')
+    public static function getRoutes($baseRouteName = 'admin', $baseModuleName = 'project')
     {
         $baseName = $baseRouteName . '.' . $baseModuleName . '.';
         return [
@@ -29,7 +29,7 @@ class BlogHelper
      *
      * @return array
      */
-    public static function getLang($baseLangName = 'admin', $baseModuleName = 'blog')
+    public static function getLang($baseLangName = 'admin', $baseModuleName = 'project')
     {
         $baseFullLangName = $baseLangName . '.' . $baseModuleName . '.';
 

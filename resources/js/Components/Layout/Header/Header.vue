@@ -73,8 +73,8 @@
                         {{ __('Home') }}
                     </div>
                 </inertia-link>
-                <inertia-link :href="route('home.index')">
-                    <div class="nav main_blue flex center" :class="activeMenu(route('home.index',[],false)) ? 'current' : ''">{{ __('Projects') }}</div>
+                <inertia-link :href="route('project.index')">
+                    <div class="nav main_blue flex center" :class="activeMenu(route('project.index',[],false)) ? 'current' : ''">{{ __('Projects') }}</div>
                 </inertia-link>
                 <inertia-link :href="route('blog.index')">
                     <div class="nav main_blue flex center" :class="activeMenu(route('blog.index',[],false)) ? 'current' : ''">{{ __('Blog') }}</div>

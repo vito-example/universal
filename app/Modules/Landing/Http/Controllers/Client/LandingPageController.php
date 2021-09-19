@@ -4,14 +4,14 @@ namespace App\Modules\Landing\Http\Controllers\Client;
 
 use App\Modules\Landing\Http\Requests\ContactSendRequest;
 use App\Modules\Landing\Http\Resources\Blog\BlogItemResource;
-use App\Modules\Landing\Http\Resources\Lecturer\LecturerItemResource;
+use App\Modules\Landing\Http\Resources\Project\ProjectItemResource;
 use App\Modules\Landing\Mail\ContactSend;
 use App\Modules\Pages\Http\Resources\Client\PageMetaInfoResource;
 use App\Modules\Pages\Models\Blog;
 use App\Modules\Pages\Models\Page;
+use App\Modules\Pages\Models\Project;
 use App\Modules\Pages\Services\Client\BlogData;
 use Butschster\Head\Contracts\MetaTags\MetaInterface;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -219,81 +219,77 @@ class LandingPageController extends Controller
         ]);
     }
 
+
     /**
      * @param Request $request
      *
      * @return Response
      */
-    public function trainers(Request $request): \Inertia\Response
+    public function project(Request $request): \Inertia\Response
     {
-        /** @var $lecturers LengthAwarePaginator */
-        $lecturers = Lecturer::with([
+        /** @var $projects LengthAwarePaginator */
+        $projects = Project::query();
+
+        $projects = $projects->with([
             'translations',
             'images'
-        ])->active()->paginate($request->get('total', 9));
+        ])->active()->orderBy('created_at','desc')->paginate($request->get('total', 1));
 
-        $lecturerData = collect();
-        foreach ($lecturers->getIterator() as $lecturer) {
-            $lecturerData->push((new LecturerItemResource($lecturer))->toListItem());
+
+
+        $projectsData = collect();
+        foreach ($projects->getIterator() as $project) {
+            $projectsData->push((new ProjectItemResource($project))->toListItem());
         }
-        $lecturers->setCollection($lecturerData);
+        $projects->setCollection($projectsData);
 
-        $allSeoData = (new LecturerItemResource())->toListSeoData();
+        $allSeoData = (new ProjectItemResource())->toListSeoData();
         View::composer('app', function ($view) use ($allSeoData) {
             $view->with('allSeoData', $allSeoData);
         });
 
-        return Jetstream::inertia()->render($request, 'Landing/Trainers/Index', [
-            'items' => $lecturers,
-            'seo' => $allSeoData
+        $page = Page::where('name', 'project')->first();
+        $pageData = $page ? (new PageMetaInfoResource($page->meta))->toArray($request) : [];
+
+        return Jetstream::inertia()->render($request, 'Landing/Project/Index', [
+            'items' => $projects,
+            'seo' => $allSeoData,
+            'route' => route('blog.index'),
+            'page' => $pageData
         ]);
     }
-
 
     /**
      * @param Request $request
      * @param $slug
      *
-     * @return JsonResponse
+     * @return Response
      */
-    public function trainersShow(Request $request, $slug)
+    public function projectView(Request $request, $slug): \Inertia\Response
     {
-        $lecturer = Lecturer::with([
+        $project = Project::with([
             'translations',
             'images'
         ])
             ->active()
-            ->where('id', getIdFromSlug($slug))
-            ->firstOrFail();
+            ->where('id', getIdFromSlug($slug))->firstOrFail();
 
 
-        return response()->json([
-            'lecturer' => (new LecturerItemResource($lecturer))->toArrayForShow()
+        $allSeoData = (new BlogItemResource($project))->toSeoData();
+        View::composer('app', function ($view) use ($allSeoData) {
+            $view->with('allSeoData', $allSeoData);
+        });
+
+        $page = Page::where('name', 'blog')->first();
+        $pageData = $page ? (new PageMetaInfoResource($page->meta))->toArray($request) : [];
+
+        return Jetstream::inertia()->render($request, 'Landing/Project/Show', [
+            'item' => (new ProjectItemResource($project))->toArrayForShow(),
+            'seo' => $allSeoData,
+            'page' => $pageData
         ]);
     }
 
 
-    /**
-     * @param array $array
-     * @param int $level
-     */
-    public function parseTree(array $array, int $level = 1)
-    {
-        foreach($array as $key => $item){
-            $prefix = '';
-            if ($level === 3) {
-                $prefix = '--';
-            }
-            if ($level === 2) {
-                $prefix = '-';
-            }
-            $this->directionArray [] = [
-                'value' => $item['id'],
-                'label' => $prefix . $item['label']
-            ];
-            if(count($item['children'])){
-                $this->parseTree($item['children'], $level + 1);
-            }
-        }
-    }
+
 }
