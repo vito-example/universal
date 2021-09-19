@@ -275,7 +275,7 @@ class LandingPageController extends Controller
             ->where('id', getIdFromSlug($slug))->firstOrFail();
 
 
-        $allSeoData = (new BlogItemResource($project))->toSeoData();
+        $allSeoData = (new ProjectItemResource($project))->toSeoData();
         View::composer('app', function ($view) use ($allSeoData) {
             $view->with('allSeoData', $allSeoData);
         });
@@ -289,7 +289,4 @@ class LandingPageController extends Controller
             'page' => $pageData
         ]);
     }
-
-
-
 }
