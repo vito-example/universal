@@ -1,23 +1,6 @@
 
 jQuery(document).ready(function(){
     function createSlick(){
-        $(".hero_slider").not('.slick-initialized').slick({
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            draggable: true,
-            arrows: true,
-            prevArrow: "#prev_heroslide",
-            nextArrow: "#next_heroslide",
-            dots: true,
-            fade: true,
-            speed: 900,
-            infinite: true,
-            cssEase: "cubic-bezier(0.7, 0, 0.3, 1)",
-            touchThreshold: 100,
-            autoplay: true,
-            autoplaySpeed: 5000,
-            pauseOnHover: false,
-        });
         $(".projects_slider").slick({
             slidesToShow: 3,
             slidesToScroll: 1,
@@ -126,35 +109,7 @@ jQuery(document).ready(function(){
             ],
         });
 
-        $(".header_top_slider").slick({
-            slidesToShow: 4,
-            slidesToScroll: 1,
-            draggable: false,
-            arrows: false,
-            dots: false,
-            speed: 3000,
-            infinite: true,
-            touchThreshold: 100,
-            autoplay: true,
-            autoplaySpeed: 0,
-            cssEase: "linear ",
-            responsive: [
-                {
-                    breakpoint: 700,
-                    settings: {
-                        slidesToShow: 3,
-                    },
-                },
-                {
-                    breakpoint: 500,
-                    settings: {
-                        slidesToShow: 2,
-                    },
-                },
-            ],
-        });
     }
-    createSlick();
 
     $(window).on( 'resize', createSlick);
 });

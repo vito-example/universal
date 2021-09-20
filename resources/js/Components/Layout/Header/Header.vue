@@ -1,6 +1,6 @@
 <template>
     <header class="header">
-        <div class="header_top_slider flex slick-initialized slick-slider">
+        <div class="header_top_slider flex">
             <a :href="'tel://' + getValueByFields(contact.fields,'phone')" target="_blank" class="flex info">
                 <img src="/landing_resources/img/icons/header/1.png" alt=""/>
                 <div>{{ getValueByFields(contact.fields, 'phone') }}</div>
@@ -67,10 +67,10 @@
                 </div>
                 <div class="poppins">Road, Water, Architecture, Topography</div>
             </inertia-link>
-            <div class="navbar part">
+            <div class="navbar part" :class="burgerMenuVisible ? 'open' : ''">
                 <inertia-link :href="route('home.index')">
                     <div class="nav main_blue flex center" :class="activeMenu(route('home.index',[],false)) ? 'current' : ''">
-                        {{ __('Home') }}
+                        {{ __('home') }}
                     </div>
                 </inertia-link>
                 <inertia-link :href="route('project.index')">
@@ -85,11 +85,11 @@
                 <inertia-link :href="route('about.index')">
                     <div class="nav main_blue flex center" :class="activeMenu(route('about.index',[],false)) ? 'current' : ''">{{ __('About us') }}</div>
                 </inertia-link>
-                <inertia-link :href="route('home.index')">
-                    <div class="nav main_blue flex center" :class="activeMenu(route('home.index',[],false)) ? 'current' : ''">{{ __('Contact us') }}</div>
+                <inertia-link :href="route('contact.index')">
+                    <div class="nav main_blue flex center" :class="activeMenu(route('contact.index',[],false)) ? 'current' : ''">{{ __('Contact us') }}</div>
                 </inertia-link>
             </div>
-            <button id="menu_btn"></button>
+            <button id="menu_btn" @click="burgerMenuVisible = !burgerMenuVisible" :class="burgerMenuVisible ? 'clicked' : ''"></button>
             <landing-language-selector/>
         </div>
     </header>
@@ -103,7 +103,6 @@ import {Inertia} from "@inertiajs/inertia"
 // components
 import Logo from "@/Components/Layout/Logo/Logo"
 import Dropdown from "@/Components/Web/Dropdown/Dropdown"
-import BurgerMenu from "@/Components/Layout/Header/BurgerMenu"
 import LandingLanguageSelector from "../../LandingLanguageSelector";
 
 export default {
@@ -112,7 +111,6 @@ export default {
     components: {
         Logo,
         Dropdown,
-        BurgerMenu,
         LandingLanguageSelector
     },
 
@@ -151,6 +149,34 @@ export default {
         Inertia.on('start', (event) => {
             this.burgerMenuVisible = false
         })
+        $(".header_top_slider").slick({
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            draggable: false,
+            arrows: false,
+            dots: false,
+            speed: 3000,
+            infinite: true,
+            touchThreshold: 100,
+            autoplay: true,
+            autoplaySpeed: 0,
+            cssEase: "linear ",
+            responsive: [
+                {
+                    breakpoint: 700,
+                    settings: {
+                        slidesToShow: 3,
+                    },
+                },
+                {
+                    breakpoint: 500,
+                    settings: {
+                        slidesToShow: 2,
+                    },
+                },
+            ],
+        });
+
     }
 }
 </script>

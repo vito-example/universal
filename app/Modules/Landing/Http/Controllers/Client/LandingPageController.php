@@ -13,6 +13,8 @@ use App\Modules\Pages\Models\Page;
 use App\Modules\Pages\Models\Project;
 use App\Modules\Pages\Models\Team;
 use App\Modules\Pages\Services\Client\BlogData;
+use App\Modules\Pages\Services\Client\ProjectData;
+use App\Modules\Pages\Services\Client\TeamData;
 use Butschster\Head\Contracts\MetaTags\MetaInterface;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -60,6 +62,10 @@ class LandingPageController extends Controller
 
         $blogs = (new BlogData())->getBlogs();
 
+        $projects = (new ProjectData())->getProjects();
+
+        $teams = (new TeamData())->getTeams();
+
         $allSeoData = SeoData::setTitle(__('seo.home.title'))
             ->setDescription(__('seo.home.description'))
             ->setKeywords(__('seo.home.description'))
@@ -74,6 +80,8 @@ class LandingPageController extends Controller
         return Jetstream::inertia()->render($request, 'Landing/Home/Index', [
             'page' => $pageData,
             'blogs' => $blogs,
+            'projects' => $projects,
+            'teams' => $teams
         ]);
     }
 
@@ -111,9 +119,6 @@ class LandingPageController extends Controller
      */
     public function contact(Request $request)
     {
-        $page = Page::where('name', 'contact')->first();
-        $pageData = $page ? (new PageMetaInfoResource($page->meta))->toArray($request) : [];
-
         $allSeoData = SeoData::setTitle(__('seo.contact.title'))
             ->setDescription(__('seo.contact.description'))
             ->setKeywords(__('seo.contact.description'))
@@ -126,7 +131,6 @@ class LandingPageController extends Controller
         });
 
         return Jetstream::inertia()->render($request, 'Landing/Contact/Index', [
-            'page' => $pageData,
             'seo' => $allSeoData
         ]);
     }
@@ -139,7 +143,10 @@ class LandingPageController extends Controller
     public function contactSend(ContactSendRequest $request)
     {
         $data = [
-            'name' => $request->name,
+            'name' => $request->first_name. ' ' . $request->last_name,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'phone' => $request->phone,
             'email' => $request->email,
             'message' => $request->message
         ];

@@ -10,12 +10,9 @@
                 <div class="sub_title dc" style="max-width: 609px" v-html="content">
                 </div>
                 <div class="hero_btns flex">
-                    <a href="#">
-                        <button class="main_btn read_more">Read More</button>
-                    </a>
-                    <a href="contact.html">
-                        <button class="main_btn contact">Contact Us</button>
-                    </a>
+                    <router-link :href="route('contact.index')">
+                        <button class="main_btn contact">{{__('Contact Us')}}</button>
+                    </router-link>
                 </div>
             </div>
         </div>

@@ -1,7 +1,7 @@
 <template>
     <landing>
         <template v-slot:main>
-            <breadcrumb :item="page[0]['fields']"/>
+            <breadcrumb v-if="page.length" :item="page[0]['fields']"/>
             <section class="projects_page wrapper">
                 <div class="project_grid">
                     <project-item

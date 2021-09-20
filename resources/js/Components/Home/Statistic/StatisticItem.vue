@@ -1,7 +1,9 @@
 <template>
-    <div class="statistic__item text-center">
-        <div class="font-size-xxl font-weight-600">{{ value }}</div>
-        <div class="font-weight-300 padding-top-19">{{ key }}</div>
+    <div class="counts">
+        <div class="main_titles">
+            <div class="title_bg bold">{{backgroundTitle}}</div>
+            <div class="title bold main_blue" v-html="title"></div>
+        </div>
     </div>
 </template>
 
@@ -14,12 +16,12 @@ export default {
     },
 
     computed: {
-        key () {
-            return this.getValueByFields('key')
+        backgroundTitle () {
+            return this.getValueByFields('background_title')
         },
 
-        value () {
-            return this.getValueByFields('value')
+        title () {
+            return `<span>${this.getValueByFields('background_title')}</span>${this.getValueByFields('title')}`
         }
     },
 

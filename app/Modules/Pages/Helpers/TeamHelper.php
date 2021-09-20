@@ -35,7 +35,7 @@ class TeamHelper
      *
      * @return array
      */
-    public static function getLang($baseLangName = 'admin', $baseModuleName = 'team')
+    public static function getLang($baseLangName = 'admin', $baseModuleName = 'blog')
     {
         $baseFullLangName = $baseLangName . '.' . $baseModuleName . '.';
 

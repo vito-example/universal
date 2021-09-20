@@ -29,7 +29,7 @@ class ProjectHelper
      *
      * @return array
      */
-    public static function getLang($baseLangName = 'admin', $baseModuleName = 'project')
+    public static function getLang($baseLangName = 'admin', $baseModuleName = 'blog')
     {
         $baseFullLangName = $baseLangName . '.' . $baseModuleName . '.';
 

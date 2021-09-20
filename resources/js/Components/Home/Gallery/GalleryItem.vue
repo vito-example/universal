@@ -1,13 +1,11 @@
 <template>
-    <a
-            :href="href"
-            class="company-item flex items-center width-full"
-    >
+    <div class="g_item img_overlay">
         <lazy-image
-                :src="image"
-                class="width-full"
+            :src="image"
+            :show-placeholder="true"
+            :alt="title"
         />
-    </a>
+    </div>
 </template>
 
 <script>
@@ -17,26 +15,25 @@ export default {
     components: {
         LazyImage
     },
-
     props: {
-        company: {
+        item: {
             type: Object
         }
     },
 
     computed: {
-        href () {
-            return this.getValueByFields('action_url')
-        },
-
         image () {
             return this.getValueByFields('image')
+        },
+
+        title () {
+            return `No Image`
         }
     },
 
     methods: {
         getValueByFields(key) {
-            return this.company.filter((item) => item.name === key)?.[0]?.value
+            return this.item.filter((item) => item.name === key)?.[0]?.value
         }
     }
 }

@@ -5,6 +5,24 @@
                 <template v-if="item.key === 'slider'">
                     <hero-section :item="item"/>
                 </template>
+                <template v-if="item.key === 'about'">
+                    <about-section :item="item"/>
+                </template>
+                <template v-if="item.key === 'statistic'">
+                    <statistic-section :item="item"/>
+                </template>
+                <template v-if="item.key === 'projects'">
+                    <projects-section :page="item" :items="projects" />
+                </template>
+                <template v-if="item.key === 'galleries'">
+                    <gallery-section :item="item" />
+                </template>
+                <template v-if="item.key === 'blogs'">
+                    <news-section :page="item" :items="blogs" />
+                </template>
+                <template v-if="item.key === 'teams'">
+                    <team-section :page="item" :items="teams" />
+                </template>
             </template>
         </template>
     </landing>
@@ -12,15 +30,36 @@
 <script>
 import Landing from "@/Layouts/Landing";
 import HeroSection from "../../../Components/Home/HeroSection";
+import AboutSection from "../../../Components/Home/AboutSection";
+import StatisticSection from "../../../Components/Home/StatisticSection";
+import ProjectsSection from "../../../Components/Home/ProjectsSection";
+import GallerySection from "../../../Components/Home/GallerySection";
+import NewsSection from "../../../Components/Home/NewsSection";
+import TeamSection from "../../../Components/Home/TeamSection";
 import $ from 'jquery';
 
 export default {
     components: {
         Landing,
         HeroSection,
+        AboutSection,
+        StatisticSection,
+        ProjectsSection,
+        GallerySection,
+        NewsSection,
+        TeamSection,
     },
     props: {
         page: {
+            type: Array
+        },
+        projects: {
+            type: Array
+        },
+        blogs: {
+            type: Array
+        },
+        teams: {
             type: Array
         },
     },

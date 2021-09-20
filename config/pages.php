@@ -69,32 +69,19 @@ return [
                 'status' => 1,
                 'inputs' => [
                     [
-                        'images' => [],
-                        'label' => 'multi_fields',
-                        'name' => 'fields',
-                        'type' => 'multi_fields',
-                        'is_translation' => false,
+                        'label' => 'background_title',
+                        'name' => 'background_title',
+                        'type' => 'text',
+                        'is_translation' => true,
                         'is_required' => false,
-                        'additional_fields' => [
-                            [
-                                'label' => 'title',
-                                'name' => 'title',
-                                'type' => 'text',
-                                'is_translation' => true,
-                                'is_required' => false,
-                                'locale' => []
-                            ],
-                            [
-                                'label' => 'url',
-                                'name' => 'url',
-                                'type' => 'text',
-                                'is_translation' => false,
-                                'is_required' => false,
-                                'locale' => []
-                            ],
-                        ]
-                    ]
-
+                    ],
+                    [
+                        'label' => 'title',
+                        'name' => 'title',
+                        'type' => 'wysiwig',
+                        'is_translation' => true,
+                        'is_required' => false,
+                    ],
                 ]
             ],
             'about' => [
@@ -526,6 +513,41 @@ return [
                 'label' => '',
                 'status' => 1,
                 'inputs' => [
+                    [
+                        'label' => 'background_title',
+                        'name' => 'background_title',
+                        'type' => 'text',
+                        'is_translation' => true,
+                        'is_required' => false
+                    ],
+                    [
+                        'label' => 'title',
+                        'name' => 'title',
+                        'type' => 'text',
+                        'is_translation' => true,
+                        'is_required' => false
+                    ],
+                    [
+                        'label' => 'description',
+                        'name' => 'description',
+                        'type' => 'wysiwig',
+                        'is_translation' => true,
+                        'is_required' => false
+                    ],
+                    [
+                        'label' => 'contact_sub_title',
+                        'name' => 'contact_sub_title',
+                        'type' => 'text',
+                        'is_translation' => true,
+                        'is_required' => false
+                    ],
+                    [
+                        'label' => 'form_title',
+                        'name' => 'form_title',
+                        'type' => 'text',
+                        'is_translation' => true,
+                        'is_required' => false
+                    ],
                     [
                         'label' => 'phone',
                         'name' => 'phone',

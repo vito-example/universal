@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{__('აგრარიუმი')}}</title>
+    <title>{{__('Uproject')}}</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,14 +13,14 @@
             width:92%;
             max-width:600px;
             padding:29px 4% 10px 4%;
-            background:#88aa3f no-repeat right bottom;
+            background:#d90a2c no-repeat right bottom;
             background-size:auto 100%;
             margin:50px auto;
         }
         #mainContent{
-            -webkit-box-shadow: #88aa3f;
-            -moz-box-shadow: #88aa3f;
-            box-shadow: #88aa3f;
+            -webkit-box-shadow: #d90a2c;
+            -moz-box-shadow: #d90a2c;
+            box-shadow: #d90a2c;
             background-color:#fff;
             margin-bottom:13px;
             position:relative;
@@ -39,12 +39,12 @@
             margin:25px auto;
         }
         #content h2{
-            color: #88aa3f;
+            color: #d90a2c;
             font-size:15px;
             margin:0 5.45% 25px 5.45%;
         }
         #content h5{
-            color: #88aa3f;
+            color: #d90a2c;
             font-size:12px;
             margin:0 5.45% 25px 5.45%;
         }
@@ -54,7 +54,9 @@
 <section id="wrapper">
     <section id="mainContent">
         <section id="content">
-            <h2> {{__('სრული სახელი')}}: {{$data['name']}}</h2>
+            <h2> {{__('სახელი')}}: {{$data['first_name']}}</h2>
+            <h2> {{__('გვარი')}}: {{$data['last_name']}}</h2>
+            <h2> {{__('ტელეფონი')}}: {{$data['phone']}}</h2>
             <h2> {{__('ელ-ფოსტა')}}: {{$data['email']}}</h2>
             <h2> {{__('შეტყობინება')}}</h2>
             <h5>{{$data['message']}}</h5>

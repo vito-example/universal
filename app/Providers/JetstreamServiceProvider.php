@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Actions\Jetstream\DeleteUser;
 use App\Modules\Pages\Http\Resources\Client\PageMetaInfoResource;
 use App\Modules\Pages\Models\Page;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
@@ -71,11 +72,12 @@ class JetstreamServiceProvider extends ServiceProvider
                 return config('language_manager.locales');
             },
             'lang'              => function () {
-                $file = resource_path('lang/' . app()->getLocale() . '.json');
+                $file = base_path() . '/lang/'.app()->getLocale().'/client.php';
+
                 if (!file_exists($file)) {
                     return [];
                 } else {
-                    return json_decode(file_get_contents($file), true);
+                    return include $file;
                 }
             },
             'active_route' => 'test'
