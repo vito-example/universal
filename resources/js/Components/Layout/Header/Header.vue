@@ -102,7 +102,6 @@ import {Inertia} from "@inertiajs/inertia"
 
 // components
 import Logo from "@/Components/Layout/Logo/Logo"
-import Dropdown from "@/Components/Web/Dropdown/Dropdown"
 import LandingLanguageSelector from "../../LandingLanguageSelector";
 
 export default {
@@ -110,7 +109,6 @@ export default {
 
     components: {
         Logo,
-        Dropdown,
         LandingLanguageSelector
     },
 

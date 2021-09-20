@@ -22,12 +22,10 @@
 
 <script>
 import LazyImage from "@/Components/Web/Image/Image"
-import ArrowIcon from "@/Components/Web/Icons/Arrow"
 
 export default {
     components: {
         LazyImage,
-        ArrowIcon
     },
 
     props: {
