@@ -19,7 +19,7 @@ return [
     /**
      * Admin user avatar url.
      */
-    'user_avatar'           => 'admin_resources/img/placeholders/avatars/avatar_tazo.jpg',
+    'user_avatar'           => 'admin_resources/img/placeholders/avatars/avatar_vito.jpg',
 
     /**
      * Project name.
@@ -34,7 +34,7 @@ return [
     /**
      * Login background image url
      */
-    'login_background_image'    => 'admin_resources/img/placeholders/headers/login_header.jpg',
+    'login_background_image'    => 'admin_resources/img/bg.jpg',
 
     /**
      * Login page logo.
