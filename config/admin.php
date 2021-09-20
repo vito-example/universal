@@ -14,7 +14,7 @@ return [
     /**
      * Handcrafted member url.
      */
-    'handcrafted_by_url'        => 'https://www.linkedin.com/in/vito-maxatadze-67b451197/',
+    'handcrafted_by_url'        => 'https://www.facebook.com/vito.makhatadze',
 
     /**
      * Admin user avatar url.
