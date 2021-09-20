@@ -51,7 +51,7 @@ return [
     /**
      * Admin user
      */
-    'admin_user_name'           => env('ADMIN_USER_EMAIL', 'tazo@github.ge'),
+    'admin_user_name'           => env('ADMIN_USER_EMAIL', 'https://github.com/makhatadze'),
     'admin_user_password'       => env('ADMIN_USER_PASSWORD', ''),
 
     /**
