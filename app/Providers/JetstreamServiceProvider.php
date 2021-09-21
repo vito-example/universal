@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Actions\Jetstream\DeleteUser;
 use App\Modules\Pages\Http\Resources\Client\PageMetaInfoResource;
 use App\Modules\Pages\Models\Page;
+use App\Modules\Pages\Services\Client\ServiceData;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
@@ -55,13 +56,14 @@ class JetstreamServiceProvider extends ServiceProvider
             });
 
             $pages = Page::whereIn('name', [ Page::NAME_CONTACT,Page::NAME_SOCIAL])->get();
+
             $layoutData = [];
             foreach($pages as $page) {
                 $pageData = (new PageMetaInfoResource($page->meta))->toArray();
                 $layoutData[$page->name] =!empty($pageData[0]) ? $pageData[0] : [];
             }
         }
-
+        $services = (new ServiceData())->getServicesStatic(5);
         Inertia::share([
             'layoutData'   => $layoutData,
             'seo'   => $allSeoData,
@@ -80,7 +82,8 @@ class JetstreamServiceProvider extends ServiceProvider
                     return include $file;
                 }
             },
-            'active_route' => 'test'
+            'active_route' => 'test',
+            'servicesStatic' => $services
         ]);
 
     }

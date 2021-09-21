@@ -414,4 +414,8 @@ return array (
   array (
     'MODULES_CONTENT_CONTENT' => 'კონტენტი',
   ),
+  'service' => 
+  array (
+    'menu' => 'სერვისები',
+  ),
 );

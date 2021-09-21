@@ -5,6 +5,9 @@
                 <template v-if="item.key === 'slider'">
                     <hero-section :item="item"/>
                 </template>
+                <template v-if="item.key === 'services'">
+                    <services-section :page="item" :items="services" />
+                </template>
                 <template v-if="item.key === 'about'">
                     <about-section :item="item"/>
                 </template>
@@ -33,6 +36,7 @@ import HeroSection from "../../../Components/Home/HeroSection";
 import AboutSection from "../../../Components/Home/AboutSection";
 import StatisticSection from "../../../Components/Home/StatisticSection";
 import ProjectsSection from "../../../Components/Home/ProjectsSection";
+import ServicesSection from "../../../Components/Home/ServicesSection";
 import GallerySection from "../../../Components/Home/GallerySection";
 import NewsSection from "../../../Components/Home/NewsSection";
 import TeamSection from "../../../Components/Home/TeamSection";
@@ -48,6 +52,7 @@ export default {
         GallerySection,
         NewsSection,
         TeamSection,
+        ServicesSection
     },
     props: {
         page: {
@@ -60,6 +65,9 @@ export default {
             type: Array
         },
         teams: {
+            type: Array
+        },
+        services: {
             type: Array
         },
     },

@@ -129,6 +129,17 @@
                             :item="this.form && this.form.meta ? this.form.meta : undefined">
                         </single-elements>
 
+                        <single-elements
+                            v-if="type === 'service'"
+                            :editorConfig="editorConfig"
+                            :default-locale="default_locale"
+                            :locales="locales"
+                            :lang="lang"
+                            :options="options"
+                            :routes="routes"
+                            :updateData="updateData"
+                            :item="this.form && this.form.meta ? this.form.meta : undefined">
+                        </single-elements>
 
                     </el-tab-pane>
 

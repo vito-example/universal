@@ -17,12 +17,12 @@
                 </div>
             </div>
             <div class="column">
-                <div class="title bold">Our Services</div>
-                <a class="item link" href="#">Chemical Engineering Projects</a>
-                <a class="item link" href="#">Mining Engineering Construction</a>
-                <a class="item link" href="#">Engineering Welding Engineering</a>
-                <a class="item link" href="#">Welding Engineering</a>
-                <a class="item link" href="#">Space Program XYZ</a>
+                <div class="title bold">{{__('Our Services')}}</div>
+                <template v-for="{title, slug} in servicesStatic">
+                    <inertia-link class="item link" :href="route('service.show',slug)">
+                        {{title}}
+                    </inertia-link>
+                </template>
             </div>
             <div class="column">
                 <div class="title bold">{{__('Office in Tbilisi')}}</div>
@@ -71,6 +71,9 @@ export default {
         },
         social () {
             return this.$page.props.layoutData ? this.$page.props.layoutData.social : {}
+        },
+        servicesStatic () {
+            return this.$page.props.servicesStatic ?? []
         },
     },
     methods: {

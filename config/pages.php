@@ -389,6 +389,48 @@ return [
                 ]
             ],
         ],
+        'service' => [
+            'hero' => [
+                'activeLocaleKey' => 'en',
+                'key' => 'hero',
+                'label' => '',
+                'status' => 1,
+                'inputs' => [
+                    [
+                        'label' => 'background_title',
+                        'name' => 'background_title',
+                        'type' => 'text',
+                        'is_translation' => true,
+                        'is_required' => false,
+                        'locale' => []
+                    ],
+                    [
+                        'label' => 'title',
+                        'name' => 'title',
+                        'type' => 'text',
+                        'is_translation' => true,
+                        'is_required' => false,
+                        'locale' => []
+                    ],
+                    [
+                        'label' => 'description',
+                        'name' => 'description',
+                        'type' => 'wysiwig',
+                        'is_translation' => true,
+                        'is_required' => false,
+                        'locale' => []
+                    ],
+                    [
+                        'label' => 'banner_image',
+                        'name' => 'banner_image',
+                        'type' => 'image',
+                        'is_translation' => false,
+                        'is_required' => false,
+                        'image' => []
+                    ],
+                ]
+            ],
+        ],
         'about' => [
             'hero' => [
                 'activeLocaleKey' => 'en',

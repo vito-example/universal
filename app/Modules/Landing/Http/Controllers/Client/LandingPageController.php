@@ -5,15 +5,18 @@ namespace App\Modules\Landing\Http\Controllers\Client;
 use App\Modules\Landing\Http\Requests\ContactSendRequest;
 use App\Modules\Landing\Http\Resources\Blog\BlogItemResource;
 use App\Modules\Landing\Http\Resources\Project\ProjectItemResource;
+use App\Modules\Landing\Http\Resources\Service\ServiceItemResource;
 use App\Modules\Landing\Http\Resources\Team\TeamItemResource;
 use App\Modules\Landing\Mail\ContactSend;
 use App\Modules\Pages\Http\Resources\Client\PageMetaInfoResource;
 use App\Modules\Pages\Models\Blog;
 use App\Modules\Pages\Models\Page;
 use App\Modules\Pages\Models\Project;
+use App\Modules\Pages\Models\Service;
 use App\Modules\Pages\Models\Team;
 use App\Modules\Pages\Services\Client\BlogData;
 use App\Modules\Pages\Services\Client\ProjectData;
+use App\Modules\Pages\Services\Client\ServiceData;
 use App\Modules\Pages\Services\Client\TeamData;
 use Butschster\Head\Contracts\MetaTags\MetaInterface;
 use Illuminate\Http\RedirectResponse;
@@ -64,6 +67,8 @@ class LandingPageController extends Controller
 
         $projects = (new ProjectData())->getProjects();
 
+        $services = (new ServiceData())->getServices();
+
         $teams = (new TeamData())->getTeams();
 
         $allSeoData = SeoData::setTitle(__('seo.home.title'))
@@ -81,7 +86,8 @@ class LandingPageController extends Controller
             'page' => $pageData,
             'blogs' => $blogs,
             'projects' => $projects,
-            'teams' => $teams
+            'teams' => $teams,
+            'services' => $services
         ]);
     }
 
@@ -294,6 +300,37 @@ class LandingPageController extends Controller
 
         return Jetstream::inertia()->render($request, 'Landing/Project/Show', [
             'item' => (new ProjectItemResource($project))->toArrayForShow(),
+            'seo' => $allSeoData,
+            'page' => $pageData
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @param $slug
+     *
+     * @return Response
+     */
+    public function serviceView(Request $request, $slug): \Inertia\Response
+    {
+        $service = Service::with([
+            'translations',
+            'images'
+        ])
+            ->active()
+            ->where('id', getIdFromSlug($slug))->firstOrFail();
+
+
+        $allSeoData = (new ServiceItemResource($service))->toSeoData();
+        View::composer('app', function ($view) use ($allSeoData) {
+            $view->with('allSeoData', $allSeoData);
+        });
+
+        $page = Page::where('name', 'service')->first();
+        $pageData = $page ? (new PageMetaInfoResource($page->meta))->toArray($request) : [];
+
+        return Jetstream::inertia()->render($request, 'Landing/Service/Show', [
+            'item' => (new ServiceItemResource($service))->toArrayForShow(),
             'seo' => $allSeoData,
             'page' => $pageData
         ]);

@@ -15,6 +15,11 @@
             <span class="sidebar-nav-mini-hide">@lang('admin.projects.menu')</span></a>
     </li>
     <li
+        {!! strpos(request()->route()->getName(), 'admin.service.') !== false ? ' class="active"' : '' !!}>
+        <a href="{{route('admin.service.index')}}"><i class="el-icon-link sidebar-nav-icon"></i>
+            <span class="sidebar-nav-mini-hide">@lang('admin.service.menu')</span></a>
+    </li>
+    <li
         {!! strpos(request()->route()->getName(), 'admin.team.') !== false ? ' class="active"' : '' !!}>
         <a href="{{route('admin.team.index')}}"><i class="el-icon-link sidebar-nav-icon"></i>
             <span class="sidebar-nav-mini-hide">@lang('admin.teams.menu')</span></a>

@@ -39,6 +39,10 @@ Route::group(['middleware' => config('fortify.middleware', ['web'])], function (
         Route::get('{slug}',[LandingPageController::class, 'projectView'])->name('project.show');
     });
 
+    Route::prefix('service')->group(function () {
+        Route::get('{slug}',[LandingPageController::class, 'serviceView'])->name('service.show');
+    });
+
     Route::prefix('team')->group(function () {
         Route::get('',[LandingPageController::class, 'team'])->name('team.index');
         Route::get('{slug}',[LandingPageController::class, 'teamView'])->name('team.show');
