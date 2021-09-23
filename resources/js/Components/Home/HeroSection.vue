@@ -20,15 +20,11 @@
 </template>
 
 <script>
-import {Carousel, Navigation} from "vue3-carousel"
 import HeroItem from "@/Components/Home/Hero/HeroItem"
-import Slick from 'vue-slick';
 
 export default {
     components: {
-        Navigation,
         HeroItem,
-        Slick
     },
 
     props: {
@@ -37,13 +33,8 @@ export default {
 
     computed: {
         heroData() {
-            console.log(this.item?.fields?.fields?.value)
             return this.item?.fields?.fields?.value
         },
-
-        hasNavigation() {
-            return this.heroData?.length > 1
-        }
-    }
+    },
 }
 </script>

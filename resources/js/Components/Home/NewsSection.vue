@@ -82,7 +82,6 @@
 
 <script>
 import NewsItem from "@/Components/Home/News/NewsItem"
-import $ from 'jquery';
 
 export default {
     components: {
@@ -93,42 +92,5 @@ export default {
         page: Array,
         items: Array
     },
-    mounted() {
-        $(".blog_slider").slick({
-            slidesToShow: 4,
-            slidesToScroll: 1,
-            draggable: true,
-            arrows: true,
-            prevArrow: "#prev_blog",
-            nextArrow: "#next_blog",
-            dots: false,
-            speed: 300,
-            infinite: true,
-            cssEase: "linear",
-            touchThreshold: 100,
-            autoplay: false,
-            responsive: [
-                {
-                    breakpoint: 1200,
-                    settings: {
-                        slidesToShow: 3,
-                    },
-                },
-                {
-                    breakpoint: 900,
-                    settings: {
-                        slidesToShow: 2,
-                    },
-                },
-                {
-                    breakpoint: 500,
-                    settings: {
-                        slidesToShow: 1,
-                        centerMode: true,
-                    },
-                },
-            ],
-        });
-    }
 }
 </script>

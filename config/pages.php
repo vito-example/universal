@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'modules' => [
         'home' => [
             'slider' => [
@@ -556,41 +555,6 @@ return [
                 'status' => 1,
                 'inputs' => [
                     [
-                        'label' => 'background_title',
-                        'name' => 'background_title',
-                        'type' => 'text',
-                        'is_translation' => true,
-                        'is_required' => false
-                    ],
-                    [
-                        'label' => 'title',
-                        'name' => 'title',
-                        'type' => 'text',
-                        'is_translation' => true,
-                        'is_required' => false
-                    ],
-                    [
-                        'label' => 'description',
-                        'name' => 'description',
-                        'type' => 'wysiwig',
-                        'is_translation' => true,
-                        'is_required' => false
-                    ],
-                    [
-                        'label' => 'contact_sub_title',
-                        'name' => 'contact_sub_title',
-                        'type' => 'text',
-                        'is_translation' => true,
-                        'is_required' => false
-                    ],
-                    [
-                        'label' => 'form_title',
-                        'name' => 'form_title',
-                        'type' => 'text',
-                        'is_translation' => true,
-                        'is_required' => false
-                    ],
-                    [
                         'label' => 'phone',
                         'name' => 'phone',
                         'type' => 'text',
@@ -734,33 +698,5 @@ return [
                 ]
             ],
         ],
-        'setting' => [
-            'mailer' => [
-                'activeLocaleKey' => 'ka',
-                'key' => 'mailer',
-                'label' => '',
-                'status' => 1,
-                'inputs' => [
-                    [
-                        'label' => 'email',
-                        'name' => 'email',
-                        'type' => 'text',
-                        'is_translation' => false,
-                        'is_required' => false,
-                        'locale' => []
-                    ],
-                    [
-                        'label' => 'subject',
-                        'name' => 'subject',
-                        'type' => 'text',
-                        'is_translation' => false,
-                        'is_required' => false,
-                        'locale' => []
-                    ],
-                ]
-            ],
-        ],
-
     ]
-
 ];

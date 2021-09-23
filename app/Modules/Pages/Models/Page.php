@@ -42,7 +42,6 @@ class Page extends BaseModel
     const NAME_CONTACT = 'contact';
     const NAME_SERVICE = 'service';
     const NAME_SOCIAL = 'social';
-    const NAME_SETTING = 'setting';
     const NAME_SEO = 'seo';
 
     /**

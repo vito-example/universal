@@ -2,10 +2,10 @@
     <footer class="footer">
         <div class="wrapper flex">
             <div class="column">
-                <inertia-link :href="route('home.index')" class="logo medium">
+                <a :href="route('home.index')" class="logo medium">
                     {{__('UNIVERSAL')}} <span>{{__('PROJECT')}}</span>
 
-                </inertia-link>
+                </a>
                 <div class="poppins">
                     {{__('Footer Description')}}
                 </div>

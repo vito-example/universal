@@ -61,18 +61,18 @@
             </div>
         </div>
         <div class="bottom border flex">
-            <inertia-link :href="route('home.index')" class="logo red_bg part flex center">
+            <a :href="route('home.index')" class="logo red_bg part flex center">
                 <div class="main medium">
                     {{ __('UNIVERSAL') }} <span class="black medium">{{ 'PROJECT' }}</span>
                 </div>
                 <div class="poppins">Road, Water, Architecture, Topography</div>
-            </inertia-link>
+            </a>
             <div class="navbar part" :class="burgerMenuVisible ? 'open' : ''">
-                <inertia-link :href="route('home.index')">
+                <a :href="route('home.index')">
                     <div class="nav main_blue flex center" :class="activeMenu(route('home.index',[],false)) ? 'current' : ''">
                         {{ __('home') }}
                     </div>
-                </inertia-link>
+                </a>
                 <inertia-link :href="route('project.index')">
                     <div class="nav main_blue flex center" :class="activeMenu(route('project.index',[],false)) ? 'current' : ''">{{ __('Projects') }}</div>
                 </inertia-link>
@@ -85,8 +85,8 @@
                 <inertia-link :href="route('about.index')">
                     <div class="nav main_blue flex center" :class="activeMenu(route('about.index',[],false)) ? 'current' : ''">{{ __('About us') }}</div>
                 </inertia-link>
-                <inertia-link :href="route('contact.index')">
-                    <div class="nav main_blue flex center" :class="activeMenu(route('contact.index',[],false)) ? 'current' : ''">{{ __('Contact us') }}</div>
+                <inertia-link :href="route('service.index')">
+                    <div class="nav main_blue flex center" :class="activeMenu(route('service.index',[],false)) ? 'current' : ''">{{ __('Services') }}</div>
                 </inertia-link>
             </div>
             <button id="menu_btn" @click="burgerMenuVisible = !burgerMenuVisible" :class="burgerMenuVisible ? 'clicked' : ''"></button>

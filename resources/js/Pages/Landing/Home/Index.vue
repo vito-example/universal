@@ -40,7 +40,6 @@ import ServicesSection from "../../../Components/Home/ServicesSection";
 import GallerySection from "../../../Components/Home/GallerySection";
 import NewsSection from "../../../Components/Home/NewsSection";
 import TeamSection from "../../../Components/Home/TeamSection";
-import $ from 'jquery';
 
 export default {
     components: {
@@ -88,24 +87,5 @@ export default {
             return '';
         }
     },
-    mounted() {
-        $(".hero_slider").not('.slick-initialized').slick({
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            draggable: true,
-            arrows: true,
-            prevArrow: "#prev_heroslide",
-            nextArrow: "#next_heroslide",
-            dots: true,
-            fade: true,
-            speed: 900,
-            infinite: true,
-            cssEase: "cubic-bezier(0.7, 0, 0.3, 1)",
-            touchThreshold: 100,
-            autoplay: true,
-            autoplaySpeed: 5000,
-            pauseOnHover: false,
-        });
-    }
 }
 </script>

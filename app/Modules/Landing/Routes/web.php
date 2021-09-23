@@ -26,8 +26,6 @@ Route::get('language/{language}', function ($language) {
 Route::group(['middleware' => config('fortify.middleware', ['web'])], function () {
     Route::get('',[LandingPageController::class,'home'])->name('home.index');
     Route::get('about',[LandingPageController::class,'about'])->name('about.index');
-    Route::get('contact',[LandingPageController::class,'contact'])->name('contact.index');
-    Route::post('/contact', [LandingPageController::class, 'contactSend'])->name('contact.send');
 
     Route::prefix('blog')->group(function () {
         Route::get('',[LandingPageController::class, 'blog'])->name('blog.index');
@@ -40,6 +38,7 @@ Route::group(['middleware' => config('fortify.middleware', ['web'])], function (
     });
 
     Route::prefix('service')->group(function () {
+        Route::get('',[LandingPageController::class, 'service'])->name('service.index');
         Route::get('{slug}',[LandingPageController::class, 'serviceView'])->name('service.show');
     });
 

@@ -121,52 +121,6 @@ class LandingPageController extends Controller
     /**
      * @param Request $request
      *
-     * @return \Inertia\Response
-     */
-    public function contact(Request $request)
-    {
-        $allSeoData = SeoData::setTitle(__('seo.contact.title'))
-            ->setDescription(__('seo.contact.description'))
-            ->setKeywords(__('seo.contact.description'))
-            ->setOgTitle(__('seo.contact.title'))
-            ->setOgDescription(__('seo.contact.description'))
-            ->getSeoData();
-
-        View::composer('app', function ($view) use ($allSeoData) {
-            $view->with('allSeoData', $allSeoData);
-        });
-
-        return Jetstream::inertia()->render($request, 'Landing/Contact/Index', [
-            'seo' => $allSeoData
-        ]);
-    }
-
-
-    /**
-     * @param ContactSendRequest $request
-     * @return RedirectResponse
-     */
-    public function contactSend(ContactSendRequest $request)
-    {
-        $data = [
-            'name' => $request->first_name. ' ' . $request->last_name,
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'phone' => $request->phone,
-            'email' => $request->email,
-            'message' => $request->message
-        ];
-        $setting = Page::where('name', 'setting')->firstOrFail();
-        $data ['to'] = $setting->meta[0]['inputs'][0]['value'];
-        $data ['subject'] = $setting->meta[0]['inputs'][1]['value'];
-
-        Mail::to($data['to'])->send(new ContactSend($data));
-        return redirect()->route('contact.index');
-    }
-
-    /**
-     * @param Request $request
-     *
      * @return Response
      */
     public function blog(Request $request): \Inertia\Response
@@ -177,7 +131,7 @@ class LandingPageController extends Controller
         $blogs = $blogs->with([
             'translations',
             'images'
-        ])->active()->orderBy('created_at','desc')->paginate($request->get('total', 1));
+        ])->active()->orderBy('created_at','desc')->paginate($request->get('total', 9));
 
 
 
@@ -248,7 +202,7 @@ class LandingPageController extends Controller
         $projects = $projects->with([
             'translations',
             'images'
-        ])->active()->orderBy('created_at','desc')->paginate($request->get('total', 1));
+        ])->active()->orderBy('created_at','desc')->paginate($request->get('total', 9));
 
 
 
@@ -301,6 +255,40 @@ class LandingPageController extends Controller
         return Jetstream::inertia()->render($request, 'Landing/Project/Show', [
             'item' => (new ProjectItemResource($project))->toArrayForShow(),
             'seo' => $allSeoData,
+            'page' => $pageData
+        ]);
+    }
+
+    public function service(Request $request): \Inertia\Response
+    {
+        /** @var $services LengthAwarePaginator */
+        $services = Service::query();
+
+        $services = $services->with([
+            'translations',
+            'images'
+        ])->active()->orderBy('created_at','desc')->paginate($request->get('total', 12));
+
+
+
+        $servicesData = collect();
+        foreach ($services->getIterator() as $service) {
+            $servicesData->push((new ServiceItemResource($service))->toListItem());
+        }
+        $services->setCollection($servicesData);
+
+        $allSeoData = (new ProjectItemResource())->toListSeoData();
+        View::composer('app', function ($view) use ($allSeoData) {
+            $view->with('allSeoData', $allSeoData);
+        });
+
+        $page = Page::where('name', 'service')->first();
+        $pageData = $page ? (new PageMetaInfoResource($page->meta))->toArray($request) : [];
+
+        return Jetstream::inertia()->render($request, 'Landing/Service/Index', [
+            'items' => $services,
+            'seo' => $allSeoData,
+            'route' => route('blog.index'),
             'page' => $pageData
         ]);
     }

@@ -73,7 +73,6 @@
 
 <script>
 import ProjectItem from "@/Components/Home/Projects/ProjectItem"
-import $ from 'jquery';
 
 export default {
     components: {
@@ -84,36 +83,5 @@ export default {
         page: Array,
         items: Array
     },
-    mounted() {
-        $(".projects_slider").slick({
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            draggable: true,
-            arrows: true,
-            prevArrow: "#project_prev",
-            nextArrow: "#project_next",
-            dots: false,
-            speed: 300,
-            infinite: true,
-            cssEase: "linear",
-            touchThreshold: 100,
-            autoplay: false,
-            centerMode: true,
-            responsive: [
-                {
-                    breakpoint: 1000,
-                    settings: {
-                        slidesToShow: 2,
-                    },
-                },
-                {
-                    breakpoint: 700,
-                    settings: {
-                        slidesToShow: 1,
-                    },
-                },
-            ],
-        });
-    }
 }
 </script>
