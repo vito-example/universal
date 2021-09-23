@@ -6,8 +6,10 @@ return array (
   'Blog' => 'ბლოგი',
   'Team' => 'გუნდი',
   'About us' => 'ჩვენს შესახებ',
-  'Contact us' => 'ჩვენი ექსპერტიზა',
   'Footer Description' => 'ეს არის აღწერა',
   'Our Locations' => 'ჩვენი ლოკაცია',
   'Office in Tbilisi' => 'თბილისის ოფისი',
+  'Services' => 'ჩვენი ექსპერტიზა',
+  'Read More' => 'მეტის ნახვა',
+  'View All' => 'ყველას ნახვა',
 );

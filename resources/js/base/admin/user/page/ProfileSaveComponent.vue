@@ -18,43 +18,6 @@
 
                 </div>
 
-                <div class="form-group">
-
-                    <label class="col-md-2 control-label">{{ lang.surname }} <span class="text-danger">*</span>:</label>
-                    <div class="col-md-6">
-                        <el-input class="el-input--is-round" maxlength="150" show-word-limit :disabled="loading"
-                                  v-model="form.surname"></el-input>
-                    </div>
-
-                </div>
-
-                <div class="form-group">
-                    <label class="col-md-2 control-label">{{ lang.identity_number }} <span class="text-danger">*</span>:</label>
-                    <div class="col-md-6">
-                        <el-input class="el-input--is-round" maxlength="150" show-word-limit :disabled="loading"
-                                  v-model="form.identity_number"></el-input>
-                    </div>
-                </div>
-
-                <div class="form-group">
-
-                    <label class="col-md-2 control-label">{{ lang.phone_number }} <span class="text-danger">*</span>:</label>
-                    <div class="col-md-6">
-                        <el-input class="el-input--is-round" maxlength="150" show-word-limit :disabled="loading"
-                                  v-model="form.phone_number"></el-input>
-                    </div>
-
-                </div>
-
-                <div class="form-group">
-
-                    <label class="col-md-2 control-label">{{ lang.iban }} <span class="text-danger">*</span>:</label>
-                    <div class="col-md-6">
-                        <el-input class="el-input--is-round" maxlength="150" show-word-limit :disabled="loading"
-                                  v-model="form.iban"></el-input>
-                    </div>
-
-                </div>
 
                 <div class="form-group">
 

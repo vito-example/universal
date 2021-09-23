@@ -128,4 +128,5 @@ jQuery(document).ready(function(){
     createSlick();
 
     $(window).on( 'resize', createSlick());
+
 });

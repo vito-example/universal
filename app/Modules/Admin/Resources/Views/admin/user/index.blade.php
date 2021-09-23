@@ -32,7 +32,6 @@
                         <tr>
                             <th> {{ $trans_text['name'] }}</th>
                             <th>{{ $trans_text['email'] }}</th>
-                            <th>{{ $trans_text['phone_number'] }}</th>
                             <th>{{ $trans_text['roles_name'] }}</th>
                             <th>{{ $trans_text['created_at'] }}</th>
                             <th width="10%" class="text-center">@lang('admin.action')</th>
@@ -43,7 +42,6 @@
                             <tr>
                                 <td>{!! $item->name !!} {!! $item->surname !!}</td>
                                 <td>{!! $item->email !!}</td>
-                                <td>{!! $item->phone_number !!}</td>
                                 <td>{!! $item->rolesName !!}</td>
                                 <td>{!! $item->created_at->toDateTimeString() !!}</td>
                                 <td class="text-center">
