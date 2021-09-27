@@ -694,6 +694,13 @@ return [
                         'type' => 'textarea',
                         'is_translation' => false,
                         'is_required' => false
+                    ],
+                    [
+                        'label' => 'analytic_no_scripts',
+                        'name' => 'analytic_no_scripts',
+                        'type' => 'textarea',
+                        'is_translation' => false,
+                        'is_required' => false
                     ]
                 ]
             ],

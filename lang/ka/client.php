@@ -12,4 +12,5 @@ return array (
   'Services' => 'ჩვენი ექსპერტიზა',
   'Read More' => 'მეტის ნახვა',
   'View All' => 'ყველას ნახვა',
+  'Our Services' => 'ჩვენი სერვისები',
 );

@@ -117,17 +117,20 @@ class PageSeoService
 
         if (empty($analyticData)) {
             return [
-                'scripts' => ''
+                'scripts' => '',
+                'no_scripts' => '',
             ];
         }
 
         if (!empty($analyticData['fields'])) {
             return [
-                'scripts' => $analyticData['fields']['analytic_scripts']['value']
+                'scripts' => isset($analyticData['fields']['analytic_scripts']) ? $analyticData['fields']['analytic_scripts']['value'] : '',
+                'no_scripts' => isset($analyticData['fields']['analytic_no_scripts']) ? $analyticData['fields']['analytic_no_scripts']['value'] : '',
             ];
         } else {
             return [
-                'scripts' => $analyticData['inputs'][0]['value']
+                'scripts' => isset($analyticData['inputs'][0]) ? $analyticData['inputs'][0]['value'] : '',
+                'no_scripts' => isset($analyticData['inputs'][1]) ? $analyticData['inputs'][1]['value'] : '',
             ];
         }
     }

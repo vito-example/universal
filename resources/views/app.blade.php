@@ -37,6 +37,7 @@
 
     </head>
     <body class="font-sans antialiased">
-        @inertia
+    {!! $allSeoData['no_scripts'] !!}
+    @inertia
     </body>
 </html>

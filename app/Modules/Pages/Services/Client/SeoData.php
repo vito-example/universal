@@ -136,10 +136,11 @@ class SeoData
     public function getSeoData()
     {
         $analyticSeoData = Page::whereName(Page::NAME_SEO)->first();
-        $analytics = PageSeoService::getAnalyticData($analyticSeoData ? $analyticSeoData->first()->meta : []);
+        $analytics = PageSeoService::getAnalyticData($analyticSeoData ? $analyticSeoData->meta : []);
 
         return [
             'scripts' => $analytics['scripts'],
+            'no_scripts' => $analytics['no_scripts'],
             'title' => $this->title,
             'description' => $this->description,
             'keywords' => $this->keywords,
