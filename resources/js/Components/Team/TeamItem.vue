@@ -8,6 +8,9 @@
             <div class="caption">
                 <div class="name">{{name}}</div>
                 <div class="pos">{{position}}</div>
+                <div class="info" v-html="description">
+
+                </div>
             </div>
         </inertia-link>
 </template>
@@ -35,6 +38,9 @@ export default {
         },
         position () {
             return this.item.position
+        },
+        description () {
+            return this.item.about
         },
         image () {
             return this.item.profile_image

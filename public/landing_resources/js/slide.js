@@ -88,6 +88,41 @@ jQuery(document).ready(function(){
                 },
             ],
         });
+        $(".team_slider_home").slick({
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            draggable: true,
+            arrows: true,
+            prevArrow: "#prev_team",
+            nextArrow: "#next_team",
+            dots: false,
+            speed: 300,
+            infinite: true,
+            cssEase: "linear",
+            touchThreshold: 100,
+            autoplay: false,
+            responsive: [
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 3,
+                    },
+                },
+                {
+                    breakpoint: 900,
+                    settings: {
+                        slidesToShow: 2,
+                    },
+                },
+                {
+                    breakpoint: 500,
+                    settings: {
+                        slidesToShow: 1,
+                        centerMode: true,
+                    },
+                },
+            ],
+        });
 
         $(".blog_slider").slick({
             slidesToShow: 4,

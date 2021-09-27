@@ -1,5 +1,11 @@
 <template>
     <div class="service_box border">
+        <lazy-image
+            :src="image"
+            :show-placeholder="true"
+            class="serbox_bg"
+            :alt="title"
+        />
         <div class="text1 transition5">{{title}}</div>
         <div class="text2 bold main_blue transition5" v-html="description">
         </div>
