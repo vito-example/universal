@@ -29,7 +29,7 @@ export default {
         AOS.init({
             startEvent: 'load'
         })
-    }
+    },
 }
 </script>
 <style>

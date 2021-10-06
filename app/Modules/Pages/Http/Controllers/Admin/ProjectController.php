@@ -101,7 +101,7 @@ class ProjectController extends BaseController
                 $images = GetImageWithType::setImages($item->images->toArray() ?: [])->generateWithType()->getImagesWithType();
                 $this->baseData['item']['main'] = $locales;
                 $this->baseData['item']['main'] = array_merge($this->baseData['item']['main'], $item->only($item->getFillable()));
-                $this->baseData['item']['main']['date'] = Carbon::parse($this->baseData['item']['main']['date'])->format('Y/m/d');
+                $this->baseData['item']['main']['date'] = $this->baseData['item']['main']['date'] ? Carbon::parse($this->baseData['item']['main']['date'])->format('Y/m/d') : '';
                 $this->baseData['item']['main']['images'] = $images;
                 foreach ($locales as $key => $locale) {
                     $this->baseData['item']['seo_meta'][$key] = $locale['seo_meta'] ?? [

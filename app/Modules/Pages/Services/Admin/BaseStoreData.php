@@ -137,6 +137,9 @@ abstract class BaseStoreData
     protected function create()
     {
         $saveData = Arr::except($this->infoData, ['images']);
+        if ($saveData['date'] === 'Invalid date') {
+            $saveData['date'] = null;
+        }
         if ($this->entity) {
             $this->entity->update($saveData);
             foreach (config('language_manager.locales') as $locale) {

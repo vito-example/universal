@@ -249,7 +249,7 @@ class LandingPageController extends Controller
             $view->with('allSeoData', $allSeoData);
         });
 
-        $page = Page::where('name', 'blog')->first();
+        $page = Page::where('name', 'project')->first();
         $pageData = $page ? (new PageMetaInfoResource($page->meta))->toArray($request) : [];
 
         return Jetstream::inertia()->render($request, 'Landing/Project/Show', [

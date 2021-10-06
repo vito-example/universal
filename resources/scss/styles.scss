@@ -266,6 +266,12 @@ img {
     background-size: cover;
 }
 
+.main_showcases.service {
+    background: url('../img/showcases/4.png') no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
 .paginations .page_number {
     position: relative;
     width: 50px;
@@ -298,14 +304,12 @@ img {
     transform: scale(1);
 }
 
-.quote_box {
-    padding: 64px 110px;
+blockquote {
+    padding: 32px 32px;
+    border: 1px solid #dcdcdc;
     border-bottom: 2px solid #d90a2c;
-    font-size: 51px;
-    align-items: flex-start;
-    position: relative;
-    margin-bottom: 40px;
-    margin-top: 20px;
+    color: #013448;
+    font-size: 24px;
 }
 
 .quote_box .bold {
@@ -500,7 +504,7 @@ img {
     font-size: 103px;
     color: transparent;
     -webkit-text-stroke: #ffffff 2px;
-    opacity: 0.25;
+    opacity: 0.4;
     margin-left: -50px;
     margin-bottom: -55px;
 }
@@ -646,7 +650,7 @@ img {
 }
 
 .service_boxes .service_box {
-    padding: 40px;
+    padding: 26px;
     border-bottom: 6px solid #d90a2c;
     height: 261px;
     position: relative;
@@ -712,6 +716,10 @@ img {
     font-size: 20px;
     font-weight: bold;
     color: #fff;
+    margin-bottom: 10px;
+}
+.service_boxes .service_box .para {
+    color: rgba(255, 255, 255, 0.863);
 }
 
 .service_boxes .service_box .plus {
@@ -1355,7 +1363,7 @@ img {
 }
 
 .blogs_page .blog_item .read_more_rotate::after {
-    background: url("../img/icons/svg/bp.png");
+    background: url(/img/icons/svg/bp.png);
 }
 
 /* projects.html */
