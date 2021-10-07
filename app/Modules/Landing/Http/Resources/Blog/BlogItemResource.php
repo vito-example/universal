@@ -37,7 +37,7 @@ class BlogItemResource
         return [
             'id'    => $this->item->id,
             'title' => $this->item->title,
-            'description' => Str::limit($this->item->description, 112),
+            'description' => $this->item->short_description,
             'profile_image' => $this->item->getImageByKey('profile'),
             'show_url'  =>route('blog.show',generateSlug($this->item->id,$this->item->title)),
             'created_at' => $this->getDateFormat(),

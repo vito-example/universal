@@ -137,7 +137,7 @@ abstract class BaseStoreData
     protected function create()
     {
         $saveData = Arr::except($this->infoData, ['images']);
-        if ($saveData['date'] === 'Invalid date') {
+        if (isset($saveData['date']) && $saveData['date'] === 'Invalid date') {
             $saveData['date'] = null;
         }
         if ($this->entity) {

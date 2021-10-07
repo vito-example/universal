@@ -6,9 +6,12 @@
             :alt="title"
             class="serbox_bg"
         />
-        <div class="text1 transition5">{{title}}</div>
-        <div class="text2 bold main_blue transition5" v-html="description">
+        <div class="text2 bold main_blue transition5">
+            {{title}}
         </div>
+        <p class="para">
+            {{description}}
+        </p>
         <inertia-link :href="showUrl">
             <button class="plus flex center transition5">
                 <svg

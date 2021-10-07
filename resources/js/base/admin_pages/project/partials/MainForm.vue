@@ -26,6 +26,19 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group dashed">
+                                    <label class="col-md-1 control-label"><span
+                                        class="text-danger">*</span>{{ lang.short_description }} <span class="grey">{{
+                                            locale
+                                        }}</span>:</label>
+                                    <div class="col-md-10 uppercase-medium">
+                                        <input class="form-control" maxlength="150"
+                                               :disabled="loading"
+                                               :config="editorConfigData"
+                                               v-model="form[locale].short_description">
+                                    </div>
+                                </div>
+
                                 <div class="form-group editor-large">
                                     <label class="col-md-1 control-label"><span class="text-danger">*</span>{{
                                             lang.description

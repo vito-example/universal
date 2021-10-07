@@ -54,6 +54,7 @@ class ProjectHelper
             'status_no' => __($baseFullLangName . 'status_no'),
             'id' => __($baseFullLangName . 'id'),
             'title' => __($baseFullLangName . 'title'),
+            'short_description' => __($baseFullLangName . 'short_description'),
             'description' => __($baseFullLangName . 'description'),
             'date' => __($baseFullLangName . 'date'),
             'image_profile' => __($baseFullLangName . 'image_profile'),

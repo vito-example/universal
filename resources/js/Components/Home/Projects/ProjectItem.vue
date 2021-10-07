@@ -7,7 +7,6 @@
                 :alt="title"
             />
         </div>
-        <div class="category bold">{{title}}</div>
         <div class="name">{{title}}</div>
         <div class="dc" v-html="description">
 

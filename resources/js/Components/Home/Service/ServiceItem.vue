@@ -9,8 +9,9 @@
         <div class="text2 bold main_blue transition5">
             {{title}}
         </div>
-<!--        <p class="para" v-html="description">-->
-<!--        </p>-->
+        <p class="para">
+            {{description}}
+        </p>
         <inertia-link :href="showUrl">
             <button class="plus flex center transition5">
                 <svg

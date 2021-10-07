@@ -55,6 +55,7 @@ class ServiceHelper
             'id' => __($baseFullLangName . 'id'),
             'title' => __($baseFullLangName . 'title'),
             'description' => __($baseFullLangName . 'description'),
+            'short_description' => __($baseFullLangName . 'short_description'),
             'date' => __($baseFullLangName . 'date'),
             'image_profile' => __($baseFullLangName . 'image_profile'),
             'files' => __($baseFullLangName . 'files'),

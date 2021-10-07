@@ -88,6 +88,7 @@ class Service extends Model
     /** @var array */
     public $translatedAttributes = [
         'title',
+        'short_description',
         'description',
         'seo_meta'
     ];

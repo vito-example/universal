@@ -43,7 +43,7 @@ class ServiceItemResource
         return [
             'id'    => $this->item->id,
             'title' => $this->item->title,
-            'description' => Str::limit($this->item->description, 70),
+            'description' => $this->item->short_description,
             'profile_image' => $this->item->getImageByKey('profile'),
             'show_url'  =>route('service.show',generateSlug($this->item->id,$this->item->title)),
             'created_at' => $this->getDateFormat(),

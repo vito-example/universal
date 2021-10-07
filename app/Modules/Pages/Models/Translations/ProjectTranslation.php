@@ -35,6 +35,7 @@ class ProjectTranslation extends BaseTranslationModel
     protected $fillable = [
         'title',
         'description',
+        'short_description',
         'seo_meta'
     ];
 
